@@ -1,0 +1,13 @@
+    title: Climate
+    icon: mdi:radiator
+    cards:
+    - type: thermostat
+      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1
+    - type: thermostat
+      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1_2
+    - type: thermostat
+      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1_3
+    - type: thermostat
+      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1_4
+    - type: thermostat
+      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1_5

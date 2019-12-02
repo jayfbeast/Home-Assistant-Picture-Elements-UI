@@ -1,0 +1,13 @@
+    title: Audio System
+    icon: mdi:spotify
+    panel: true
+    cards:
+      - type: custom:layout-card
+        layout: horizontal
+        cards:
+          - type: media-control
+            entity: media_player.spotify
+          # - type: 'custom:spotify-card'
+          #   client_id: !secret spotify_client_id
+            #limit: <optional number of playlists to retrieve (default 10)>
+            #device: <optional name of a device to pre-select>

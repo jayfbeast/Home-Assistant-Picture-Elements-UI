@@ -1,0 +1,546 @@
+    title: Home Theater
+    icon: mdi:movie-open
+    background: center / cover no-repeat url("/local/background-lovelace/views/hometheater.jpg") fixed
+    #background: var(--lovelace-background)
+    #theme: weather
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.projector_switch
+                icon: mdi:power
+                size: 30px
+              - type: custom:button-card
+                entity: switch.onkyo_tx_nr757_power
+                icon: mdi:power
+                size: 30px
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.onkyo_tx_nr757_dvdinput
+                icon: mdi:apple
+                size: 30px
+              - type: custom:button-card
+                entity: switch.onkyo_tx_nr757_video2input
+                icon: mdi:kodi
+                size: 30px                    
+              - type: custom:button-card
+                entity: switch.onkyo_tx_nr757_streamboxinput
+                icon: mdi:gamepad-variant
+                size: 30px
+              - type: custom:button-card
+                entity: switch.onkyo_tx_nr757_video3input
+                icon: mdi:nintendo-switch
+                size: 30px
+              - type: custom:button-card
+                entity: switch.onkyo_tx_nr757_networkinput
+                icon: mdi:lan
+                size: 30px
+      - type: entities
+        show_header_toggle: false
+        entities: 
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: 'custom:button-card'
+                name: Volume
+              - type: custom:slider-entity-row
+                entity: media_player.onkyo_tx_nr757
+                name: Volume
+                full_row: true
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    entity: switch.onkyo_volmute
+                    show_icon: false
+                  - type: custom:button-card
+                    entity: switch.onkyo_volunmute
+                    show_icon: false
+              - type: divider
+                style:
+                  height: 10px
+              - type: divider
+                style:
+                  height: 1px
+                  width: 80%
+                  margin-left: auto
+                  margin-right: auto
+                  background: '#62717b'
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: divider
+                style:
+                  height: 10px
+              - type: 'custom:button-card'
+                name: Subwoofers
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    entity: switch.onkyo_subvoloff
+                    show_icon: false
+                  - type: custom:button-card
+                    entity: switch.onkyo_subvolhalf
+                    show_icon: false
+                  - type: custom:button-card
+                    entity: switch.onkyo_subvolmax
+                    show_icon: false
+                  - type: custom:button-card
+                    entity: switch.onkyo_subvoldown
+                    show_icon: false
+                  - type: custom:button-card
+                    entity: switch.onkyo_subvolup
+                    show_icon: false
+              - type: divider
+                style:
+                  height: 10px
+      - type: custom:vertical-stack-in-card
+        title: Onkyo Remote Control
+        cards:
+          - type: divider
+            style:
+              height: 20px
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.onkyo_remotemenu
+                icon: mdi:menu
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+              - type: custom:button-card
+                entity: switch.onkyo_remoteup
+                icon: mdi:arrow-up-bold
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+              - type: custom:button-card
+                entity: switch.onkyo_remotequicksetup
+                icon: mdi:settings
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black                  
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.onkyo_remoteleft
+                icon: mdi:arrow-left-bold
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+              - type: custom:button-card
+                entity: switch.onkyo_remoteenter
+                icon: mdi:location-enter
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+              - type: custom:button-card
+                entity: switch.onkyo_remoteright
+                icon: mdi:arrow-right-bold
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.onkyo_remoteexit
+                icon: mdi:exit-run
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black                                
+              - type: custom:button-card
+                entity: switch.onkyo_remotedown
+                icon: mdi:arrow-down-bold
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+              - type: custom:button-card
+                entity: switch.onkyo_remotehome
+                icon: mdi:home
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+          - type: divider
+            style:
+              height: 20px
+          - type: divider
+            style:
+              height: 1px
+              width: 80%
+              margin-left: auto
+              margin-right: auto
+              background: '#62717b'
+          - type: divider
+            style:
+              height: 20px
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.onkyo_remoteinstaprevue
+                show_icon: false
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+              - type: custom:button-card
+                entity: switch.onkyo_remoteaudioadjust
+                show_icon: false
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+              - type: custom:button-card
+                entity: switch.onkyo_remotevideoadjust
+                show_icon: false
+                size: 30px
+                state:
+                  - value: 'on'
+                    color: black
+                  - value: 'off'
+                    color: black
+          - type: divider
+            style:
+              height: 10px
+      - type: custom:mini-media-player
+        entity: media_player.kodi_home_theater
+      - type: media-control
+        entity: media_player.kodi_home_theater
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: 'custom:button-card'
+            #color_type: label-card
+            ##template: remote_button_round
+            #color: rgba(150, 150, 150, 0.1)
+            name: Kodi Remote
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                name: Menu
+                size: 30%
+                show_name: true
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ContextMenu
+                    entity_id: media_player.kodi_home_theater
+                #template: remote_button_round
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                #template: remote_button_round
+                hold_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Up
+                    entity_id: media_player.kodi_home_theater
+                  repeat: 100
+                icon: 'mdi:arrow-up-bold-circle'
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Up
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:chevron-double-up'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                hold_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    entity_id: media_player.kodi_home_theater
+                    action: pageup
+                  repeat: 100
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    entity_id: media_player.kodi_home_theater
+                    action: pageup
+          - type: horizontal-stack
+            cards:
+              - icon: 'mdi:arrow-left-bold-circle'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Left
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:check-circle-outline'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Select
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:arrow-right-bold-circle'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Right
+                    entity_id: media_player.kodi_home_theater
+          - type: horizontal-stack
+            cards:
+              - icon: 'mdi:backburger'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                show_name: true
+                name: Return
+                size: 30%
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Back
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:arrow-down-bold-circle'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                hold_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Down
+                    entity_id: media_player.kodi_home_theater
+                  repeat: 100
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Down
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:chevron-double-down'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                hold_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    entity_id: media_player.kodi_home_theater
+                    action: pagedown
+                  repeat: 100
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    entity_id: media_player.kodi_home_theater
+                    action: pagedown
+          - type: horizontal-stack
+            cards:
+              - icon: 'mdi:chevron-double-left'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    entity_id: media_player.kodi_home_theater
+                    action: stepback
+              - icon: 'mdi:pause'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    action: playpause
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:chevron-double-right'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    action: stepforward
+                    entity_id: media_player.kodi_home_theater
+          - type: horizontal-stack
+            cards:
+              - icon: 'mdi:home'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                name: Home
+                size: 30%
+                show_name: true
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Home
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:stop'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    entity_id: media_player.kodi_home_theater
+                    action: stop
+              - icon: 'mdi:information-outline'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                name: Info
+                size: 30%
+                show_name: true
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Info
+                    entity_id: media_player.kodi_home_theater
+      - type: entities
+        title: Lights
+        entities:
+          - type: custom:slider-entity-row
+            entity: light.basement_wall
+            name: Wall
+            toggle: true
+          - type: custom:slider-entity-row
+            entity: light.basement_home_theater
+            name: Front
+            toggle: true
+          - type: custom:slider-entity-row
+            entity: light.basement_playroom
+            name: Rear
+            toggle: true
+          - type: custom:slider-entity-row
+            entity: light.basement_stairs
+            name: Stairs
+            toggle: true
+        show_header_toggle: false
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: 'custom:button-card'
+            #color_type: label-card
+            ##template: remote_button_round
+            #color: rgba(150, 150, 150, 0.1)
+            name: Games (PC)
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                size: 100%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/gamesicon/2K20-Logo.png
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  service_data:
+                    retain: 0
+                    payload: '["NBA2K20.bat", "", "C:\\Games\\"]'
+                    topic: winthing/system/commands/run
+                    qos: 0
+                #template: remote_button_round
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                #template: remote_button_round
+                hold_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Up
+                    entity_id: media_player.kodi_home_theater
+                  repeat: 100
+                icon: 'mdi:arrow-up-bold-circle'
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Up
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:chevron-double-up'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                hold_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    entity_id: media_player.kodi_home_theater
+                    action: pageup
+                  repeat: 100
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.ExecuteAction
+                    entity_id: media_player.kodi_home_theater
+                    action: pageup
+          - type: horizontal-stack
+            cards:
+              - icon: 'mdi:arrow-left-bold-circle'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Left
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:check-circle-outline'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Select
+                    entity_id: media_player.kodi_home_theater
+              - icon: 'mdi:arrow-right-bold-circle'
+                type: 'custom:button-card'
+                #template: remote_button_round
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    method: Input.Right
+                    entity_id: media_player.kodi_home_theater

@@ -1,0 +1,16 @@
+    title: Audio System
+    icon: mdi:music
+    id: kiosk_audiosystem
+    cards:
+      - type: custom:mini-media-player
+        entity: media_player.kitchen_living_room
+      - type: custom:mini-media-player
+        entity: media_player.patio
+      - type: custom:mini-media-player
+        entity: media_player.master_bedroom
+      - type: custom:mini-media-player
+        entity: media_player.nathan_s_bedroom
+      - type: custom:mini-media-player
+        entity: media_player.xavier_s_bedroom
+      - type: custom:mini-media-player
+        entity: media_player.bathroom

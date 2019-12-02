@@ -1,0 +1,222 @@
+    title: System Monitor
+    icon: mdi:monitor-dashboard
+    cards:
+        # The markdown card will render markdown text.
+      - type: entities
+        title: Home Assistant statistics
+        show_header_toggle: false
+        entities:
+          - sensor.latest_version
+          - sensor.home_assistant_v2_db
+          - sensor.home_assistant_log
+      - type: entities
+        title: Docker
+        show_header_toggle: false
+        entities:
+          - sensor.docker_version
+      - type: entities
+        title: Home-Assistant
+        show_header_toggle: false
+        entities:
+          - sensor.docker_home_assistant_status
+          - sensor.docker_home_assistant_up_time
+          - sensor.docker_home_assistant_cpu_use
+          - sensor.docker_home_assistant_memory_use
+          - sensor.docker_home_assistant_memory_use_percent
+
+      - type: entities
+        show_header_toggle: off
+        entities:
+          - type: section
+            label: Home-Assistant
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    name: CPU Usage
+                    entities: 
+                      - sensor.docker_home_assistant_cpu_use
+                    height: 25
+                    line_width: 2
+                    font_size: 70
+                    hours_to_show: 24
+                    points_per_hour: 1
+                    show:
+                      extrema: true
+                      fill: true
+                    color_thresholds:
+                      - value: 90
+                        color: "#FFFF00"
+                      - value: 80
+                        color: "#1db954"
+                      - value: 0
+                        color: "#3498db"
+                  - type: custom:mini-graph-card
+                    name: Memory Usage
+                    entities: 
+                      - sensor.docker_home_assistant_memory_use_percent
+                    height: 25
+                    line_width: 2
+                    font_size: 70
+                    hours_to_show: 24
+                    points_per_hour: 1
+                    show:
+                      extrema: true
+                      fill: true
+                    color_thresholds:
+                      - value: 90
+                        color: "#FFFF00"
+                      - value: 80
+                        color: "#1db954"
+                      - value: 0
+                        color: "#3498db"
+      - type: entities
+        title: AppDaemon
+        show_header_toggle: false
+        entities:
+          - sensor.docker_appdaemon_home_assistant_status
+          - sensor.docker_appdaemon_home_assistant_up_time
+          - sensor.docker_appdaemon_home_assistant_cpu_use
+          - sensor.docker_appdaemon_home_assistant_memory_use
+          - sensor.docker_appdaemon_home_assistant_memory_use_percent
+      - type: entities
+        title: Portainer
+        show_header_toggle: false
+        entities:
+          - sensor.docker_portainer_status
+          - sensor.docker_portainer_up_time
+          - sensor.docker_portainer_cpu_use
+          - sensor.docker_portainer_memory_use
+          - sensor.docker_portainer_memory_use_percent
+      - type: entities
+        title: SFTP
+        show_header_toggle: false
+        entities:
+          - sensor.docker_sftp_status
+          - sensor.docker_sftp_up_time
+          - sensor.docker_sftp_cpu_use
+          - sensor.docker_sftp_memory_use
+          - sensor.docker_sftp_memory_use_percent
+      - type: entities
+        title: OwnTracks
+        show_header_toggle: false
+        entities:
+          - sensor.docker_owntracks_status
+          - sensor.docker_owntracks_up_time
+          - sensor.docker_owntracks_cpu_use
+          - sensor.docker_owntracks_memory_use
+          - sensor.docker_owntracks_memory_use_percent
+      - type: entities
+        title: Mosquitto (MQTT)
+        show_header_toggle: false
+        entities:
+          - sensor.docker_mosquitto_status
+          - sensor.docker_mosquitto_up_time
+          - sensor.docker_mosquitto_cpu_use
+          - sensor.docker_mosquitto_memory_use
+          - sensor.docker_mosquitto_memory_use_percent 
+      - type: vertical-stack
+        cards:    
+          - type: entities
+            #show_header_toggle: off
+            entities:
+              # - type: section
+              #   label: HASSIO SERVER -------- NUC i5 -------- Ubuntu 18.04.1 LTS -------- HA 0.91.4
+              - type: custom:vertical-stack-in-card
+                cards:
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:card-modder
+                        card: 
+                          type: picture
+                          image: /local/graphics-lovelace/systemmonitor/IntelNUC.jpg
+                        style:                 
+                          border-radius: 5px
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: sensor.time_online
+                        title: Up Time this Week
+                        align: center
+                        padding: 5px
+                        max: 168
+                        card_style: 
+                          border-radius: 5px
+              - type: custom:bar-card
+                align: split
+                show_icon: true
+                padding: 4px
+                columns: 2
+                card_style: 
+                  border-radius: 5px
+                entities:
+                  - entity: sensor.disk_use_percent
+                    title: Disk
+                  - entity: sensor.memory_use_percent
+                    title: RAM
+
+              - type: custom:bar-card
+                align: split
+                show_icon: true
+                padding: 4px
+                columns: 2
+                card_style: 
+                  border-radius: 5px
+                entities:
+                  - entity: sensor.processor_use
+                    title: CPU
+                  - entity: sensor.cpu_temperature
+                    title: Temp  
+                    icon: mdi:thermometer
+      - type: custom:bar-card
+        title_position: inside
+        show_icon: true
+        align: split
+        padding: 4px
+        card_style: 
+          border-radius: 5px
+        columns: 1
+        max: 100
+        entities:
+          - entity: sensor.speedtest_ping
+            severity:
+            - value: 20
+              color: '#1db954'
+            - value: 30
+              color: '#bf9540'
+            - value: 50
+              color: '#bf4040'
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities: 
+              - sensor.speedtest_download
+            height: 50
+            line_width: 2
+            font_size: 70
+            hours_to_show: 12
+            points_per_hour: 1
+            show:
+              extrema: true
+              fill: true
+            color_thresholds:
+              - value: 0
+                color: "#FFFF00"
+              - value: 40
+                color: "#3498db"
+          - type: custom:mini-graph-card
+            entities: 
+              - sensor.speedtest_upload
+            height: 50
+            line_width: 2
+            font_size: 70
+            hours_to_show: 12
+            points_per_hour: 1
+            show:
+              extrema: true
+              fill: true
+            color_thresholds:
+              - value: 0
+                color: "#FFFF00"
+              - value: 13
+                color: "#3498db"

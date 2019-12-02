@@ -1,0 +1,90 @@
+    title: Lights
+    icon: mdi:lightbulb
+    cards:
+        # The markdown card will render markdown text.
+      - type: entities
+        entities:
+            # Displays the light entity. It's optional
+            #- entity: light.lifx_d0_73_d5_30_cc_f3
+
+            # Card configuration starts here
+            - type: 'custom:rgb-light-card'
+              entity: light.basement_rgb_lights
+              colors:
+                  # Any option of the light.turn_on service can be used in each color
+                  - rgb_color:
+                        - 255
+                        - 127
+                        - 255
+                    brightness: 220
+                    transition: 2
+                  - hs_color:
+                        - 60
+                        - 30
+                    icon_color: '#fff8b0' # Override icon color
+                    transition: 2
+      - type: entities
+        title: Home Theater
+        entities:
+          - light.basement_rgb_lights
+          - light.lifx_d0_73_d5_30_cc_f3
+          - light.lifx_gu10_30c421
+          - light.basement_wall
+          - type: custom:slider-entity-row
+            entity: light.basement_wall
+            full_row: true
+          - light.basement_home_theater
+          - type: custom:slider-entity-row
+            entity: light.basement_home_theater
+            full_row: true
+          - light.basement_playroom
+          - type: custom:slider-entity-row
+            entity: light.basement_playroom
+            full_row: true
+          - light.basement_stairs
+          - type: custom:slider-entity-row
+            entity: light.basement_stairs
+            full_row: true
+        show_header_toggle: true
+      - type: entities
+        title: House Entrance
+        entities:
+          - switch.exterior_light_front
+          - light.door_hall_hallway
+        show_header_toggle: true
+      - type: entities
+        title: Laundry Room
+        entities:
+          - switch.laundry_room
+        show_header_toggle: true
+      - type: entities
+        title: Kitchen
+        entities:
+          - light.kitchen
+          - light.kitchen_over_sink
+          - switch.food_area
+        show_header_toggle: true
+      - type: entities
+        title: Living Room
+        entities:
+          - light.living_room
+          - light.living_room_center_light
+        show_header_toggle: true
+      - type: entities
+        title: Patio
+        entities:
+          - switch.exterior_light_back
+        show_header_toggle: true
+      - type: entities
+        title: Restroom
+        entities:
+          - light.restroom
+        show_header_toggle: true
+      - type: entities
+        title: Stairs
+        entities:
+          - switch.stairs
+          - light.stairs_leds
+          - switch.stairs_led_to_2nd_floor
+        show_header_toggle: true
+

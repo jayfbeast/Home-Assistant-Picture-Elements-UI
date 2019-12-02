@@ -1,0 +1,142 @@
+  alarm_components:
+    name: Alarm Components
+    entities:
+      - sensor.elkm1
+      - sensor.zone_005
+      - sensor.zone_006
+  automation_view:
+    name: Automation
+    entities:
+      - group.all_automations
+  garage:
+    name: Garage
+    entities:
+      - sensor.zone_002
+      - sensor.zone_003
+  home_theater:
+    name: Home Theater
+    entities:
+      - light.basement_home_theater
+      - light.basement_playroom
+      - light.basement_stairs
+      - light.basement_wall
+      - sensor.zone_011
+      - sensor.zone_010
+  home_theater_remote_control:
+    name: Home Theater Remote Control
+    entities:
+      - switch.projector_switch
+      - switch.onkyo_volup
+      - switch.onkyo_volupplus
+      - switch.onkyo_voldown
+      - switch.onkyo_voldownplus
+      - switch.onkyo_volslider
+      - input_number.onkyo_volumeslider
+  house_entrance:
+    name: House Entrance
+    entities:
+      - switch.exterior_light_front
+      - light.door_hall_hallway
+      - sensor.keypad_001
+      - sensor.zone_001
+      - sensor.zone_004
+  kitchen:
+    name: Kitchen
+    entities:
+      - light.kitchen
+      - light.kitchen_over_sink
+      - switch.food_area
+      - sensor.zone_007
+      - sensor.zone_008
+      - sensor.stelpro_stzw402_electronic_thermostat_temperature_2
+      - sensor.zone_015
+  laundry_room:
+    name: Laundry Room
+    entities:
+      - switch.laundry_room
+      - sensor.zone_013
+  living_room:
+    name: Living Room
+    entities:
+      - light.living_room
+      - light.living_room_center_light
+      - sensor.stelpro_stzw402_electronic_thermostat_temperature_3
+      - sensor.zone_009
+  patio:
+    name: Patio
+    entities:
+      - switch.exterior_light_back
+  restroom:
+    name: Restroom
+    entities:
+      - light.restroom
+      - sensor.stelpro_stzw402_electronic_thermostat_temperature
+  second_floor_hallway:
+    name: Second Floor Hallway
+    entities:
+      - sensor.zone_014
+      - sensor.zone_012
+  server_room:
+    name: Server Room
+    entities:
+      - switch.onoff_module_1_on_off_module
+  stairs:
+    name: Stairs
+    entities:
+      - switch.stairs
+      - light.stairs_leds
+      - switch.stairs_led_to_2nd_floor
+  sunlight_config:
+    name: Sunlight Configuration
+    entities:
+      - sun.sun
+  systemmonitor:
+    name: System Monitor
+    entities:
+      - sensor.disk_use_percent
+      - sensor.disk_use
+      - sensor.disk_free
+      - sensor.memory_use_percent
+      - sensor.memory_use
+      - sensor.memory_free
+      - sensor.swap_use_percent
+      - sensor.swap_use
+      - sensor.swap_free
+      - sensor.load_1m
+      - sensor.load_5m
+      - sensor.load_15m
+      - sensor.network_in
+      - sensor.network_out
+      - sensor.throughput_network_in
+      - sensor.throughput_network_out
+      - sensor.packets_in
+      - sensor.packets_out
+      - sensor.ipv4_address
+      - sensor.ipv6_address
+      - sensor.processor_use
+      - sensor.last_boot
+  systemmonitor_view:
+    name: System
+    entities:
+      - sensor.disk_use_percent
+      - sensor.disk_use
+      - sensor.disk_free
+      - sensor.memory_use_percent
+      - sensor.memory_use
+      - sensor.memory_free
+      - sensor.swap_use_percent
+      - sensor.swap_use
+      - sensor.swap_free
+      - sensor.load_1m
+      - sensor.load_5m
+      - sensor.load_15m
+      - sensor.network_in
+      - sensor.network_out
+      - sensor.throughput_network_in
+      - sensor.throughput_network_out
+      - sensor.packets_in
+      - sensor.packets_out
+      - sensor.ipv4_address
+      - sensor.ipv6_address
+      - sensor.processor_use
+      - sensor.last_boot

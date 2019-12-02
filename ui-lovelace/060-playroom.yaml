@@ -1,0 +1,11 @@
+    title: System Monitor
+    icon: mdi:basketball
+    cards:
+        # The markdown card will render markdown text.
+      - type: entities
+        title: Home Assistant statistics
+        show_header_toggle: false
+        entities:
+          - sensor.latest_version
+          - sensor.home_assistant_v2_db
+          - sensor.home_assistant_log

@@ -1,0 +1,24 @@
+clear:
+  # Background image
+  background-image: 'center / cover no-repeat url("/local/day.jpg") fixed'
+
+  # Colors
+  text-color: '#636B75'                                                           # Grey text
+  text-medium-color: '#8c96a5'                                                    # Medium grey text
+  text-light-color: '#BAC0C6'                                                     # Light grey text
+  accent-color: '#00a1ff'                                                         # Blue
+  background-color: '#F7F8F9'                                                     # Light grey background
+  background-color-2: '#F4F5F6'                                                   # Light grey background
+  background-card-color: 'rgba(255,255,255,1.0)'                                  # White background
+  border-color: '#EAEAEA'                                                         # Light grey border
+
+  # Header
+  primary-color: 'var(--text-color)'                                              # Background
+  text-primary-color: '#FFF'                                                      # Text
+  
+  # Left Menu
+  paper-listbox-background-color: 'var(--background-color)'                       # Background
+
+  # UI
+  paper-card-header-color: 'var(--text-color)'                                    # Title in settings
+  primary-background-color: 'var(--background-color)'        
