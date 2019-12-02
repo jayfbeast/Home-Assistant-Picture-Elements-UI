@@ -482,65 +482,64 @@
                 #template: remote_button_round
                 icon: 'mdi:menu'
               - type: 'custom:button-card'
-                #template: remote_button_round
-                hold_action:
-                  service: kodi.call_method
-                  action: call-service
-                  service_data:
-                    method: Input.Up
-                    entity_id: media_player.kodi_home_theater
-                  repeat: 100
-                icon: 'mdi:arrow-up-bold-circle'
+                size: 100%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/gamesicon/shooter.png
                 tap_action:
-                  service: kodi.call_method
                   action: call-service
+                  service: mqtt.publish
                   service_data:
-                    method: Input.Up
-                    entity_id: media_player.kodi_home_theater
-              - icon: 'mdi:chevron-double-up'
-                type: 'custom:button-card'
-                #template: remote_button_round
-                hold_action:
-                  service: kodi.call_method
-                  action: call-service
-                  service_data:
-                    method: Input.ExecuteAction
-                    entity_id: media_player.kodi_home_theater
-                    action: pageup
-                  repeat: 100
+                    retain: 0
+                    payload: '["shooter.bat", "", "C:\\Games\\"]'
+                    topic: winthing/system/commands/run
+                    qos: 0
+              - type: 'custom:button-card'
+                size: 100%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/gamesicon/monsters_hd_ultimate.png
                 tap_action:
-                  service: kodi.call_method
                   action: call-service
+                  service: mqtt.publish
                   service_data:
-                    method: Input.ExecuteAction
-                    entity_id: media_player.kodi_home_theater
-                    action: pageup
+                    retain: 0
+                    payload: '["shooter.bat", "", "C:\\Games\\"]'
+                    topic: winthing/system/commands/run
+                    qos: 0
           - type: horizontal-stack
             cards:
-              - icon: 'mdi:arrow-left-bold-circle'
-                type: 'custom:button-card'
-                #template: remote_button_round
+              - type: 'custom:button-card'
+                size: 100%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/gamesicon/rocket-league.png
                 tap_action:
-                  service: kodi.call_method
                   action: call-service
+                  service: mqtt.publish
                   service_data:
-                    method: Input.Left
-                    entity_id: media_player.kodi_home_theater
-              - icon: 'mdi:check-circle-outline'
-                type: 'custom:button-card'
-                #template: remote_button_round
+                    retain: 0
+                    payload: '["shooter.bat", "", "C:\\Games\\"]'
+                    topic: winthing/system/commands/run
+                    qos: 0
+              - type: 'custom:button-card'
+                size: 100%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/gamesicon/FIFA_19_Logo.png
                 tap_action:
-                  service: kodi.call_method
                   action: call-service
+                  service: mqtt.publish
                   service_data:
-                    method: Input.Select
-                    entity_id: media_player.kodi_home_theater
-              - icon: 'mdi:arrow-right-bold-circle'
-                type: 'custom:button-card'
-                #template: remote_button_round
+                    retain: 0
+                    payload: '["shooter.bat", "", "C:\\Games\\"]'
+                    topic: winthing/system/commands/run
+                    qos: 0
+              - type: 'custom:button-card'
+                size: 100%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/gamesicon/need-for-speed-payback.png
                 tap_action:
-                  service: kodi.call_method
                   action: call-service
+                  service: mqtt.publish
                   service_data:
-                    method: Input.Right
-                    entity_id: media_player.kodi_home_theater
+                    retain: 0
+                    payload: '["shooter.bat", "", "C:\\Games\\"]'
+                    topic: winthing/system/commands/run
+                    qos: 0
