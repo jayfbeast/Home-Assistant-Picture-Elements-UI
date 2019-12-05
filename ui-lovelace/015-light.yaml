@@ -1,6 +1,10 @@
     title: Lights
     icon: mdi:lightbulb
     cards:
+      - type: entities
+        title: Christmas Tree
+        entities:
+          - switch.onoff_module_1_on_off_module
         # The markdown card will render markdown text.
       - type: entities
         entities:
