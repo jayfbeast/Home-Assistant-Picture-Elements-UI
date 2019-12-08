@@ -40,6 +40,16 @@
                 entity: switch.onkyo_tx_nr757_networkinput
                 icon: mdi:lan
                 size: 30px
+      # - type: conditional
+      #   conditions:
+      #     - entity: media_player.onkyo_tx_nr757
+      #       state: "on"
+      #     - entity: is_state_attr('media_player.onkyo_tx_nr757', 'source', 'dvd')
+      #       state: "dvd"
+      #   card:
+      #     type: entities
+      #     entities:
+      #       - switch.onoff_module_1_on_off_module
       - type: entities
         show_header_toggle: false
         entities: 
@@ -543,3 +553,407 @@
                     payload: '["shooter.bat", "", "C:\\Games\\"]'
                     topic: winthing/system/commands/run
                     qos: 0
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: 'custom:button-card'
+            name: OTA TV Channels
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/44_1-FOX.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_fox
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/3_1-CBS.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_cbs
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                size: 70%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/5_1-NBC.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_nbc
+              - type: 'custom:button-card'
+                size: 50%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/22_1-ABC.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_abc
+                icon: 'mdi:menu'
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/5_2-TheCW.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_thecw
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/10_1-TVA.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_tva
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                size: 50%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/2_1-Ici_Television_2.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_radiocanada
+              - type: 'custom:button-card'
+                size: 50%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/35_1-V.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_v
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/17_1-TeleQuebec.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_telequebec
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/12_1-CTV.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_ctv
+              - type: 'custom:button-card'
+                size: 50%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/6_1-CBC.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_cbc
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                size: 80%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/15_1-Global.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_global
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                size: 80%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/62_1-City.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_citytv
+              - type: 'custom:button-card'
+                size: 50%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/47_1-ICI_Montreal.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_icimontreal
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                size: 60%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/29_1-CanalSavoir.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_canalsavoir
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/33_1-VTPBS.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_vtpbs
+                icon: 'mdi:menu'
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/33_2-VTPBSPlus.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_vtpbsplus
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/33_3-Create.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_vtcreate
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/33_4-VTPBSKids.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_vtpbskids
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/44_2-Escape.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_escape
+                icon: 'mdi:menu'
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                size: 60%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/57_3-MLPBSKids.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_mntnlakepbskids
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/44_3-Bounce.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_bounce
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/22_3-Grit.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_grit
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/57_1-MLPBS.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_mntnlakepbs
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                size: 50%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/57_2-MHZW.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_mntnlakemhzw
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/3_3-Ion.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_ion
+                icon: 'mdi:menu'
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/5_3-MeTV.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_metv
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/22_2-Laff_2.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_laff
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                size: 50%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/3_2-Movies.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_movies
+              - type: 'custom:button-card'
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/3_4-StartTV.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_starttv
+              - type: 'custom:button-card'
+                size: 80%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/tvchannelsicon/22_4-Quest.png
+                tap_action:
+                  service: kodi.call_method
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.kodi_home_theater
+                    method: Player.Open
+                    item:
+                      channelid: !secret channelid_quest
+              - type: 'custom:button-card'
