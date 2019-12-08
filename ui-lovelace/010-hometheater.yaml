@@ -244,10 +244,17 @@
           - type: divider
             style:
               height: 10px
-      - type: custom:mini-media-player
-        entity: media_player.kodi_home_theater
-      - type: media-control
-        entity: media_player.kodi_home_theater
+      - type: custom:vertical-stack-in-card
+        title: Media Players
+        cards:
+          - type: custom:mini-media-player
+            entity: media_player.kodi_home_theater
+          - type: media-control
+            entity: media_player.kodi_home_theater
+          - type: custom:mini-media-player
+            entity: media_player.plex_home_theater
+          - type: media-control
+            entity: media_player.plex_home_theater
       - type: custom:vertical-stack-in-card
         cards:
           - type: 'custom:button-card'

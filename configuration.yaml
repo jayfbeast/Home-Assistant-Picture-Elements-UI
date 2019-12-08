@@ -60,8 +60,8 @@ elkm1:
     exclude: [1-16]
   zone:
     exclude: [16-208]
-# plex:
-#   host: !secret plex_ip_address
+plex:
+  token: !secret plex_token
 
 notify:
   - name: homeassistantmail
@@ -339,6 +339,11 @@ media_player:
     name: Kodi Home Theater
     host: !secret kodi_home_theater_ip
     port: !secret kodi_home_theater_port
+  - platform: universal
+    name: Home Theater Screen
+    children:
+      - media_player.kodi_home_theater
+      - media_player.plex_home_theater
 
 docker_monitor:
   scan_interval: 10
