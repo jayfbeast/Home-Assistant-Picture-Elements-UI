@@ -61,6 +61,7 @@ elkm1:
   zone:
     exclude: [16-208]
 plex:
+  host: !secret plex_ip_address
   token: !secret plex_token
 
 notify:
