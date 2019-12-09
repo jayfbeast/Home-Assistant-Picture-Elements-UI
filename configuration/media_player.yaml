@@ -1,0 +1,64 @@
+  - platform: onkyo
+    host: !secret onkyo_ip_address
+    name: Onkyo TX-NR757
+    receiver_max_volume: 190
+    sources:
+      pc: 'pc'
+      video1: 'video1'
+      video2: 'video2'
+      video3: 'video3'
+      video4: 'video4'
+      video5: 'video5'
+      video6: 'video6'
+      video7: 'video7'
+      dvd: 'dvd'
+      bd-dvd: 'bd-dvd'
+      tape1: 'tape1'
+      tv-tape: 'tv-tape'
+      tape2: 'tape2'
+      phono: 'phono'
+      cd: 'cd'
+      tv-cd: 'tv-cd'
+      fm: 'fm'
+      am: 'am'
+      tuner: 'tuner'
+      dlna: 'dlna'
+      internet-radio: 'internet-radio'
+      usb: 'usb'
+      network: 'network'
+      universal-port: 'universal-port'
+      multi-ch: 'multi-ch'
+      xm: 'xm'
+      sirius: 'sirius'
+  - platform: monoprice
+    port: /dev/ttyUSB0
+    zones:
+      11:
+        name: Kitchen/Living Room
+      12:
+        name: Master Bedroom
+      13:
+        name: Bathroom
+      14:
+        name: Nathan's Bedroom
+      15:
+        name: Xavier's Bedroom
+      16:
+        name: Patio
+    sources:
+      1:
+        name: Volumio
+      2:
+        name: Airport Express
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+  - platform: kodi
+    name: Kodi Home Theater
+    host: !secret kodi_home_theater_ip
+    port: !secret kodi_home_theater_port
+  - platform: universal
+    name: Home Theater Screen
+    children:
+      - media_player.kodi_home_theater
+      - media_player.plex_home_theater

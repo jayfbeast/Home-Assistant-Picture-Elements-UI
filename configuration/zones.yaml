@@ -1,0 +1,10 @@
+  - name: Work JayF
+    latitude: !secret workjayflatitude
+    longitude: !secret workjayflongitude
+    radius: 250
+    icon: !secret workjayficon
+  - name: Work Marie
+    latitude: !secret workmarielatitude
+    longitude: !secret workmarielongitude
+    radius: 250
+    icon: !secret workmarieicon

@@ -1,43 +1,82 @@
+#                 *************************************************************
+#                 *             Start of HA System Configuration              *
+#                 *************************************************************
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 ios:
 sun:
+
+#Basic information setup
+homeassistant:
+  latitude: !secret homelatitude
+  longitude: !secret homelongitude
+  elevation: !secret homeelevation
+  time_zone: !secret hometimezone
+  name: !secret homename
+
+  #Set unit system (metric or imperial)
+  unit_system: metric
+
+  #List of folders that can be used as sources for sending files.
+  whitelist_external_dirs:
+    - /config
+
+#Discovery options
+discovery:
+  ignore:
+    - plex_mediaserver
 #Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   #base_url: !secret baseurl
   use_x_forwarded_for: true
   trusted_proxies: !secret trusted_proxies
 
+#Set Lovelace in YAML mode as opposed to design.
 lovelace:
   mode: yaml
-# Uncomment this for detailed logging
-#logger:
 
-lifx:
-  light:
-    - broadcast: !secret lifx_gu10_bulb_ip_address_1
-    - broadcast: !secret lifx_gu10_bulb_ip_address_2
-
-light:
-  - platform: group
-    name: Basement RGB Lights
-    entities:
-      - light.lifx_d0_73_d5_30_cc_f3
-      - light.lifx_gu10_30c421
-
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-switch: !include switchs.yaml
+#Set Lovelace Frontend options
 frontend:
   themes: !include_dir_merge_named themes
 
-isy994:
-  host: !secret isy994address
-  username: !secret isy994username
-  password: !secret isy994password
+#Set Notify options in order to send notifications to a wide variety of platforms.
+notify:
+  - name: homeassistantmail
+    platform: smtp
+    server: !secret notifysmtpserveraddress
+    port: !secret notifysmtpserverport
+    timeout: 15
+    sender: !secret notifysenderaddress
+    encryption: starttls
+    username: !secret notifygmailusername
+    password: !secret notifygmailpassword
+    recipient: 
+      - !secret notifyrecipientaddress1
+      - !secret notifyrecipientaddress2
+    sender_name: Maison
 
+#Additional panels to frontend (sidebar)
+panel_custom:
+  - name: zwavegraph2
+    sidebar_title: ZWave Graph2
+    sidebar_icon: mdi:access-point-network
+    url_path: zwave
+
+# Uncomment this for detailed logging
+#logger:
+
+#                 *************************************************************
+#                 *              End of HA System Configuration               *
+#                 *************************************************************
+
+
+
+#                 *************************************************************
+#                 *           Start of Home Assistant Integrations            *
+#                 *************************************************************
+
+#Elk M1 Gold Alarm System
 elkm1:
   host: !secret elkm1goldaddress
   username: !secret elkm1goldusername
@@ -60,291 +99,54 @@ elkm1:
     exclude: [1-16]
   zone:
     exclude: [16-208]
+
+#Universal-Devices ISY-994
+isy994:
+  host: !secret isy994address
+  username: !secret isy994username
+  password: !secret isy994password
+
+#LIFX RGB Bulbs
+lifx:
+  light:
+    - broadcast: !secret lifx_gu10_bulb_ip_address_1
+    - broadcast: !secret lifx_gu10_bulb_ip_address_2
+
+#MQTT
+mqtt:
+  broker: !secret mqtt_broker_ip
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+#Plex Media Server
 plex:
   host: !secret plex_ip_address
   token: !secret plex_token
 
-notify:
-  - name: homeassistantmail
-    platform: smtp
-    server: !secret notifysmtpserveraddress
-    port: !secret notifysmtpserverport
-    timeout: 15
-    sender: !secret notifysenderaddress
-    encryption: starttls
-    username: !secret notifygmailusername
-    password: !secret notifygmailpassword
-    recipient: 
-      - !secret notifyrecipientaddress1
-      - !secret notifyrecipientaddress2
-    sender_name: Maison
+#SpeedTest
+speedtestdotnet:
+  scan_interval:
+    minutes: 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
 
-input_number:
-  onkyo_volumeslider:
-    name: Amplifier Volume
-    min: 0
-    max: 200
-    step: 0.5
-
-shell_command:
-  set_amplifiervolume_to_slider: '/usr/bin/python onkyo_amplifier_setvolumewithdecimal.py 192.168.1.145 5000 {{ input_number.onkyo_volumeslider }}'
-
-sensor:
-  - platform: uptime
-    name: Time Online
-    unit_of_measurement: hours
-  - platform: command_line
-    name: CPU Temperature
-    command: "cat /sys/class/thermal/thermal_zone0/temp"
-    unit_of_measurement: "°C"
-    value_template: '{{ (value | multiply(0.001)) | round(1) }}'
-  - platform: systemmonitor
-    resources:
-      - type: disk_use_percent
-        arg: /
-      - type: disk_use
-        arg: /
-      - type: disk_free
-        arg: /
-      - type: memory_use_percent
-      - type: memory_use
-      - type: memory_free
-      - type: swap_use_percent
-      - type: swap_use
-      - type: swap_free
-      - type: load_1m
-      - type: load_5m
-      - type: load_15m
-      - type: processor_use
-      - type: last_boot
-  - platform: filesize
-    file_paths:
-      - /config/home-assistant_v2.db
-      - /config/home-assistant.log
-  - platform: version
-    source: docker
-  # - platform: template
-  #   sensors:
-  #     sensor_count:
-  #       friendly_name: 'Number of Sensors'
-  #       value_template: >
-  #         {%- set domains = ['sensor'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     automation_count:
-  #       friendly_name: 'Number of Automations'
-  #       value_template: >
-  #         {%- set domains = ['automation'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     script_count:
-  #       friendly_name: 'Number of Scripts'
-  #       value_template: >
-  #         {%- set domains = ['script'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     switch_count:
-  #       friendly_name: 'Number of Switches'
-  #       value_template: >
-  #         {%- set domains = ['switch'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     binary_sensor_count:
-  #       friendly_name: 'Number of Binary Sensors'
-  #       value_template: >
-  #         {%- set domains = ['binary_sensor'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     lights_count:
-  #       friendly_name: 'Number of Lights'
-  #       value_template: >
-  #         {%- set domains = ['light'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     tracker_count:
-  #       friendly_name: 'Number of Devices'
-  #       value_template: >
-  #         {%- set domains = ['device_tracker'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     camera_count:
-  #       friendly_name: 'Number of Cameras'
-  #       value_template: >
-  #         {%- set domains = ['camera'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     fan_count:
-  #       friendly_name: 'Number of Fan'
-  #       value_template: >
-  #         {%- set domains = ['fan'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     media_player_count:
-  #       friendly_name: 'Number of Media Player'
-  #       value_template: >
-  #         {%- set domains = ['media_player'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-          
-  #     plant_count:
-  #       friendly_name: 'Number of Plants'
-  #       value_template: >
-  #         {%- set domains = ['plant'] -%}
-  #         {%- for domain in domains -%}
-  #           {%- for item in states[domain] -%}
-  #             {% if loop.first %}
-  #               {{loop.length}}
-  #             {% endif %}
-  #           {%- endfor -%}
-  #         {%- endfor -%}
-
+#Z-Wave
 zwave:
   usb_path: /dev/ttyACM0
   network_key: !secret zwavenetworkkey
   device_config: !include zwave_device_config.yaml
 
-panel_custom:
-  - name: zwavegraph2
-    sidebar_title: ZWave Graph2
-    sidebar_icon: mdi:access-point-network
-    url_path: zwave
+#                 *************************************************************
+#                 *            End of Home Assistant Integrations             *
+#                 *************************************************************
 
-zone:
-  - name: Work JayF
-    latitude: !secret workjayflatitude
-    longitude: !secret workjayflongitude
-    radius: 250
-    icon: !secret workjayficon
-  - name: Work Marie
-    latitude: !secret workmarielatitude
-    longitude: !secret workmarielongitude
-    radius: 250
-    icon: !secret workmarieicon
 
-media_player:
-  - platform: onkyo
-    host: !secret onkyo_ip_address
-    name: Onkyo TX-NR757
-    receiver_max_volume: 190
-    sources:
-      pc: 'pc'
-      video1: 'video1'
-      video2: 'video2'
-      video3: 'video3'
-      video4: 'video4'
-      video5: 'video5'
-      video6: 'video6'
-      video7: 'video7'
-      dvd: 'dvd'
-      bd-dvd: 'bd-dvd'
-      tape1: 'tape1'
-      tv-tape: 'tv-tape'
-      tape2: 'tape2'
-      phono: 'phono'
-      cd: 'cd'
-      tv-cd: 'tv-cd'
-      fm: 'fm'
-      am: 'am'
-      tuner: 'tuner'
-      dlna: 'dlna'
-      internet-radio: 'internet-radio'
-      usb: 'usb'
-      network: 'network'
-      universal-port: 'universal-port'
-      multi-ch: 'multi-ch'
-      xm: 'xm'
-      sirius: 'sirius'
-  - platform: monoprice
-    port: /dev/ttyUSB0
-    zones:
-      11:
-        name: Kitchen/Living Room
-      12:
-        name: Master Bedroom
-      13:
-        name: Bathroom
-      14:
-        name: Nathan's Bedroom
-      15:
-        name: Xavier's Bedroom
-      16:
-        name: Patio
-    sources:
-      1:
-        name: Volumio
-      2:
-        name: Airport Express
-  - platform: spotify
-    client_id: !secret spotify_client_id
-    client_secret: !secret spotify_client_secret
-  - platform: kodi
-    name: Kodi Home Theater
-    host: !secret kodi_home_theater_ip
-    port: !secret kodi_home_theater_port
-  - platform: universal
-    name: Home Theater Screen
-    children:
-      - media_player.kodi_home_theater
-      - media_player.plex_home_theater
+
+#                 *************************************************************
+#                 *                Start of Custom Components                 *
+#                 *************************************************************
 
 docker_monitor:
   scan_interval: 10
@@ -363,19 +165,25 @@ docker_monitor:
     - container_memory_percentage_usage
     - container_cpu_percentage_usage
 
-homeassistant:
-  whitelist_external_dirs:
-    - /config
+#                 *************************************************************
+#                 *                 End of Custom Components                  *
+#                 *************************************************************
 
-speedtestdotnet:
-  scan_interval:
-    minutes: 30
-  monitored_conditions:
-    - ping
-    - download
-    - upload
 
-mqtt:
-  broker: !secret mqtt_broker_ip
-  username: !secret mqtt_username
-  password: !secret mqtt_password
+
+#                 *************************************************************
+#                 *           Start of Configuration File splitting           *
+#                 *************************************************************
+
+automation: !include configuration/automations.yaml
+group: !include configuration/groups.yaml
+light: !include configuration/lights.yaml
+media_player: !include configuration/media_player.yaml
+script: !include configuration/scripts.yaml
+sensor: !include configuration/sensors.yaml
+switch: !include configuration/switchs.yaml
+zone: !include configuration/zones.yaml
+
+#                 *************************************************************
+#                 *            End of Configuration File splitting            *
+#                 *************************************************************
