@@ -1,11 +1,18 @@
     title: Lights
     icon: mdi:lightbulb
     cards:
-      - type: entities
-        title: Christmas Tree
-        entities:
-          - switch.onoff_module_1_on_off_module
-        # The markdown card will render markdown text.
+      - type: picture-entity
+        entity: switch.onoff_module_1_on_off_module
+        name: Christmas Tree
+        tap_action: 
+          action: toggle
+        image: /local/buttonbackground-lovelace/zoomin-christmas-tree.jpg
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4)
+          }
       - type: entities
         entities:
             # Displays the light entity. It's optional
@@ -31,7 +38,7 @@
         title: Home Theater
         entities:
           - light.basement_rgb_lights
-          - light.lifx_d0_73_d5_30_cc_f3
+          - light.lifx_light_30ccf3
           - light.lifx_gu10_30c421
           - light.basement_wall
           - type: custom:slider-entity-row
@@ -91,4 +98,15 @@
           - light.stairs_leds
           - switch.stairs_led_to_2nd_floor
         show_header_toggle: true
-
+      - type: picture-entity
+        entity: light.basement_wall
+        name: Basement Wall Light
+        tap_action: 
+          action: toggle
+        image: /local/buttonbackground-lovelace/basement-wall-lights.jpg
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4)
+          }

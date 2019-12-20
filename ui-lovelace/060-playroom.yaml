@@ -2,10 +2,116 @@
     icon: mdi:basketball
     cards:
         # The markdown card will render markdown text.
-      - type: entities
-        title: Home Assistant statistics
-        show_header_toggle: false
-        entities:
-          - sensor.latest_version
-          - sensor.home_assistant_v2_db
-          - sensor.home_assistant_log
+      # - type: custom:button-card
+      #   name: Android
+      #   size: 90%
+      #   show_entity_picture: true
+      #   entity_picture: /local/graphics-lovelace/kidstvshowsicons/paw-patrol.png
+      #   tap_action:
+      #     service: media_player.play_media
+      #     action: call-service
+      #     service_data:
+      #       entity_id: media_player.plex_nexus_9_lte
+      #       media_content_id: "{ \"library_name\" : \"TV Shows\", \"show_name\" : \"Paw Patrol\", \"season_number\" : 1, \"episode_number\" : 1, \"shuffle\": \"1\" }"
+      #       media_content_type: "EPISODE"
+      # - type: custom:button-card
+      #   name: ATV
+      #   size: 90%
+      #   show_entity_picture: true
+      #   entity_picture: /local/graphics-lovelace/kidstvshowsicons/paw-patrol.png
+      #   tap_action:
+      #     service: media_player.play_media
+      #     action: call-service
+      #     service_data:
+      #       entity_id: media_player.plex_home_theater
+      #       media_content_id: "{ \"library_name\" : \"TV Shows\", \"show_name\" : \"Paw Patrol\", \"season_number\" : 1, \"episode_number\" : 10, \"shuffle\": \"1\" }"
+      #       media_content_type: "EPISODE"
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                name: ATV
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/kidstvshowsicons/phineas_and_ferb.png
+                tap_action:
+                  service: media_player.play_media
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.plex_home_theater
+                    media_content_id: "{ \"playlist_name\" : \"Phineas and Ferb\", \"shuffle\": \"1\" }"
+                    media_content_type: "PLAYLIST"
+              - type: custom:button-card
+                name: ATV
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/kidstvshowsicons/mickey-roadster-racers.png
+                tap_action:
+                  service: media_player.play_media
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.plex_home_theater
+                    media_content_id: "{ \"playlist_name\" : \"Mickey and the Roadster Racers\", \"shuffle\": \"1\" }"
+                    media_content_type: "PLAYLIST"
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                name: ATV
+                size: 90%
+                show_entity_picture: true
+                entity_picture: /local/graphics-lovelace/kidstvshowsicons/paw-patrol.png
+                tap_action:
+                  service: media_player.play_media
+                  action: call-service
+                  service_data:
+                    entity_id: media_player.plex_home_theater
+                    media_content_id: "{ \"playlist_name\" : \"Paw Patrol\", \"shuffle\": \"1\" }"
+                    media_content_type: "PLAYLIST"
+              - type: custom:button-card
+      - type: custom:button-card
+        name: ATV
+        size: 90%
+        show_entity_picture: true
+        entity_picture: /local/graphics-lovelace/kidstvshowsicons/phineas_and_ferb.png
+        tap_action:
+          service: media_player.play_media
+          action: call-service
+          service_data:
+            entity_id: media_player.plex_home_theater
+            media_content_id: "{ \"playlist_name\" : \"Phineas and Ferb\", \"shuffle\": \"1\" }"
+            media_content_type: "PLAYLIST"
+      - type: custom:button-card
+        name: ATV
+        size: 90%
+        show_entity_picture: true
+        entity_picture: /local/graphics-lovelace/kidstvshowsicons/mickey-roadster-racers.png
+        tap_action:
+          service: media_player.play_media
+          action: call-service
+          service_data:
+            entity_id: media_player.plex_home_theater
+            media_content_id: "{ \"playlist_name\" : \"Mickey and the Roadster Racers\", \"shuffle\": \"1\" }"
+            media_content_type: "PLAYLIST"
+      - type: custom:button-card
+        name: ATV
+        size: 90%
+        show_entity_picture: true
+        entity_picture: /local/graphics-lovelace/kidstvshowsicons/paw-patrol.png
+        tap_action:
+          service: media_player.play_media
+          action: call-service
+          service_data:
+            entity_id: media_player.plex_home_theater
+            media_content_id: "{ \"playlist_name\" : \"Paw Patrol\", \"shuffle\": \"1\" }"
+            media_content_type: "PLAYLIST"
+      - type: custom:button-card
+        name: Script (ATV)
+        size: 90%
+        show_entity_picture: true
+        entity_picture: /local/graphics-lovelace/kidstvshowsicons/paw-patrol.png
+        tap_action:
+          service: script.turn_on
+          action: call-service
+          service_data:
+            entity_id: script.play_paw_patrol_on_plex_atv

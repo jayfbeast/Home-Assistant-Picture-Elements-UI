@@ -60,5 +60,6 @@
   - platform: universal
     name: Home Theater Screen
     children:
+      - media_player.home_theater
       - media_player.kodi_home_theater
       - media_player.plex_home_theater

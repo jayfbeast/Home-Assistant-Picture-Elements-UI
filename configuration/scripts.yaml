@@ -1,0 +1,34 @@
+  script_test2:
+    alias: “Play EPISODE Test media_player.plex_home_theater”
+    sequence:
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.plex_home_theater
+          media_content_id: "{ \"library_name\" : \"TV Shows\", \"show_name\" : \"Paw Patrol\", \"season_number\" : 1, \"episode_number\" : 10, \"shuffle\": \"1\" }"
+          media_content_type: "EPISODE"
+  play_paw_patrol_on_plex_atv:
+    alias: “Start Plex App on Apple TV”
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.home_theater
+          command: 
+            - top_menu
+      - delay: 00:00:01
+      - service: remote.send_command
+        data:
+          entity_id: remote.home_theater
+          command: 
+            - top_menu
+      - delay: 00:00:01
+      - service: remote.send_command
+        data:
+          entity_id: remote.home_theater
+          command: 
+            - select
+      - delay: 00:00:06
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.plex_home_theater
+          media_content_id: "{ \"library_name\" : \"TV Shows\", \"show_name\" : \"Paw Patrol\", \"season_number\" : 1, \"episode_number\" : 10, \"shuffle\": \"1\" }"
+          media_content_type: "EPISODE"
