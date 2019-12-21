@@ -27,6 +27,8 @@ resources:
     type: module
   - url: /local/custom-lovelace/now-playing-card/now-playing-card.js
     type: js
+  - url: /local/custom-lovelace/text-element/text-element.js
+    type: js
 
 title: Beaudoiners Ambassy in SJSR
 views: !include_dir_list ui-lovelace/
