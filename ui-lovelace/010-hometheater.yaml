@@ -1277,34 +1277,7 @@
                 box-shadow: 3px 3px rgba(0,0,0,0.4)
                 overflow: hidden
               }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              
       -  type: picture-elements
          image: /local/buttonbackground-lovelace/lights-4-bars-background.jpg
          elements:

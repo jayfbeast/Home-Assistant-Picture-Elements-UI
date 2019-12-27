@@ -1,112 +1,530 @@
     title: Lights
     icon: mdi:lightbulb
+    background: center / cover no-repeat url("/local/background-lovelace/views/grey-3d-abstract-wallpaper-2560x1440.jpg") fixed
     cards:
-      - type: picture-entity
-        entity: switch.onoff_module_1_on_off_module
-        name: Christmas Tree
-        tap_action: 
-          action: toggle
-        image: /local/buttonbackground-lovelace/zoomin-christmas-tree.jpg
-        style: |
-          ha-card {
-            border-radius: 20px;
-            border: solid 1px rgba(100,100,100,0.3);
-            box-shadow: 3px 3px rgba(0,0,0,0.4)
-          }
-      - type: entities
-        entities:
-            # Displays the light entity. It's optional
-            #- entity: light.lifx_d0_73_d5_30_cc_f3
 
-            # Card configuration starts here
-            - type: 'custom:rgb-light-card'
-              entity: light.basement_rgb_lights
-              colors:
-                  # Any option of the light.turn_on service can be used in each color
-                  - rgb_color:
-                        - 255
-                        - 127
-                        - 255
-                    brightness: 220
-                    transition: 2
-                  - hs_color:
-                        - 60
-                        - 30
-                    icon_color: '#fff8b0' # Override icon color
-                    transition: 2
-      - type: entities
-        title: Home Theater
-        entities:
-          - light.basement_rgb_lights
-          - light.lifx_light_30ccf3
-          - light.lifx_gu10_30c421
-          - light.basement_wall
-          - type: custom:slider-entity-row
-            entity: light.basement_wall
-            full_row: true
-          - light.basement_home_theater
-          - type: custom:slider-entity-row
-            entity: light.basement_home_theater
-            full_row: true
-          - light.basement_playroom
-          - type: custom:slider-entity-row
-            entity: light.basement_playroom
-            full_row: true
-          - light.basement_stairs
-          - type: custom:slider-entity-row
-            entity: light.basement_stairs
-            full_row: true
-        show_header_toggle: true
-      - type: entities
-        title: House Entrance
-        entities:
-          - switch.exterior_light_front
-          - light.door_hall_hallway
-        show_header_toggle: true
-      - type: entities
-        title: Laundry Room
-        entities:
-          - switch.laundry_room
-        show_header_toggle: true
-      - type: entities
-        title: Kitchen
-        entities:
-          - light.kitchen
-          - light.kitchen_over_sink
-          - switch.food_area
-        show_header_toggle: true
-      - type: entities
-        title: Living Room
-        entities:
-          - light.living_room
-          - light.living_room_center_light
-        show_header_toggle: true
-      - type: entities
-        title: Patio
-        entities:
-          - switch.exterior_light_back
-        show_header_toggle: true
-      - type: entities
-        title: Restroom
-        entities:
-          - light.restroom
-        show_header_toggle: true
-      - type: entities
-        title: Stairs
-        entities:
-          - switch.stairs
-          - light.stairs_leds
-          - switch.stairs_led_to_2nd_floor
-        show_header_toggle: true
-      - type: picture-entity
-        entity: light.basement_wall
-        name: Basement Wall Light
-        tap_action: 
-          action: toggle
-        image: /local/buttonbackground-lovelace/basement-wall-lights.jpg
-        style: |
-          ha-card {
-            border-radius: 20px;
-            border: solid 1px rgba(100,100,100,0.3);
-            box-shadow: 3px 3px rgba(0,0,0,0.4)
-          }
+#     *************************************************************
+#     *                     Christmas Tree                        *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/chrismas-tree-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "Christmas Tree"
+              style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+            - type: custom:text-element
+              text: "Light"
+              style: {color: white, left: 10%, top: 29%, font-size: 115%, font-weight: bold}
+            - type: 'custom:button-card'
+              entity: switch.onoff_module_1_on_off_module
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 29.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+#     *************************************************************
+#     *                      Home Theater                         *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/home-theater-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "Home Theater"
+              style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+            - type: custom:text-element
+              text: "Wall"
+              style: {color: white, left: 10%, top: 29%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.basement_wall
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 29.5%}
+            - type: 'custom:button-card'
+              entity: light.basement_wall
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 29.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Front"
+              style: {color: white, left: 10.5%, top: 48%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.basement_home_theater
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 48.5%}
+            - type: 'custom:button-card'
+              entity: light.basement_home_theater
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 48.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Rear"
+              style: {color: white, left: 10%, top: 66%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.basement_playroom
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 66.5%}
+            - type: 'custom:button-card'
+              entity: light.basement_playroom
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 66.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Stairs"
+              style: {color: white, left: 11%, top: 84.5%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.basement_stairs
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 85%}
+            - type: 'custom:button-card'
+              entity: light.basement_stairs
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 85%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+#     *************************************************************
+#     *                     House Entrance                        *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/house-entrance-door-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "House Entrance"
+              style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+            - type: custom:text-element
+              text: "Door"
+              style: {color: white, left: 10%, top: 29%, font-size: 115%, font-weight: bold}
+            - type: 'custom:button-card'
+              entity: switch.exterior_light_front
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 29.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Hall"
+              style: {color: white, left: 9.5%, top: 48%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.door_hall_hallway
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 48.5%}
+            - type: 'custom:button-card'
+              entity: light.door_hall_hallway
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 48.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+#     *************************************************************
+#     *                      Laundry Room                         *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/laundry-room-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "Laundry Room"
+              style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+            - type: custom:text-element
+              text: "Light"
+              style: {color: white, left: 10%, top: 29%, font-size: 115%, font-weight: bold}
+            - type: 'custom:button-card'
+              entity: switch.laundry_room
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 29.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+#     *************************************************************
+#     *                         Kitchen                           *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/kitchen-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "Kitchen"
+              style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+            - type: custom:text-element
+              text: "Kitchen"
+              style: {color: white, left: 10%, top: 29%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.kitchen
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 29.5%}
+            - type: 'custom:button-card'
+              entity: light.kitchen
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 29.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Over sink"
+              style: {color: white, left: 11%, top: 48%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.kitchen_over_sink
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 48.5%}
+            - type: 'custom:button-card'
+              entity: light.kitchen_over_sink
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 48.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+#     *************************************************************
+#     *                         Patio                             *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/patio-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "Patio"
+              style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+            - type: custom:text-element
+              text: "Light"
+              style: {color: white, left: 10%, top: 29%, font-size: 115%, font-weight: bold}
+            - type: 'custom:button-card'
+              entity: switch.exterior_light_back
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 29.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+#     *************************************************************
+#     *                      Living Room                          *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/living-room-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "Living Room"
+              style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+            - type: custom:text-element
+              text: "Light"
+              style: {color: white, left: 10%, top: 29%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.living_room
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 29.5%}
+            - type: 'custom:button-card'
+              entity: light.living_room
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 29.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Center"
+              style: {color: white, left: 11%, top: 48%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.living_room_center_light
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 48.5%}
+            - type: 'custom:button-card'
+              entity: light.living_room_center_light
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 48.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+#     *************************************************************
+#     *                         Restroom                          *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/restroom-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "Restroom"
+              style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+            - type: custom:text-element
+              text: "Light"
+              style: {color: white, left: 10%, top: 29%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.restroom
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 29.5%}
+            - type: 'custom:button-card'
+              entity: light.restroom
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 29.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+#     *************************************************************
+#     *                       Living Room                         *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/living-room-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "Stairs LEDs"
+              style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+            - type: custom:text-element
+              text: "Basement"
+              style: {color: white, left: 11%, top: 29%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.stairs_leds
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 29.5%}
+            - type: 'custom:button-card'
+              entity: light.stairs_leds
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 29.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "2nd Floor"
+              style: {color: white, left: 11%, top: 48%, font-size: 115%, font-weight: bold}
+            - type: 'custom:button-card'
+              entity: switch.stairs_led_to_2nd_floor
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 48.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
