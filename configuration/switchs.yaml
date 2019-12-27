@@ -93,7 +93,7 @@
     onkyo_remotequicksetup:
       command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlQuickSetup'
       command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlQuickSetup'
-      friendly_name: "Quick Setup"
+      friendly_name: "Setup"
     onkyo_remoteinstaprevue:
       command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlInstaprevue'
       command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlInstaprevue'

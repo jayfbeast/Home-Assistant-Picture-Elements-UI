@@ -150,22 +150,29 @@ zwave:
 #                 *                Start of Custom Components                 *
 #                 *************************************************************
 
-docker_monitor:
-  scan_interval: 10
-  containers:
-    - home-assistant
-    - appdaemon-home-assistant
-    - sftp
-    - portainer
-    - owntracks
-    - mosquitto
-  monitored_conditions:
-    - utilization_version
-    - container_status
-    - container_uptime
-    - container_memory_usage
-    - container_memory_percentage_usage
-    - container_cpu_percentage_usage
+browser_mod:
+  devices:
+    88145957-17b24fef:
+      name: safarimacmini
+    8df043d8_02956a70:
+      name: iphonejayf
+
+# docker_monitor:
+#   scan_interval: 10
+#   containers:
+#     - home-assistant
+#     - appdaemon-home-assistant
+#     - sftp
+#     - portainer
+#     - owntracks
+#     - mosquitto
+#   monitored_conditions:
+#     - utilization_version
+#     - container_status
+#     - container_uptime
+#     - container_memory_usage
+#     - container_memory_percentage_usage
+#     - container_cpu_percentage_usage
 
 #                 *************************************************************
 #                 *                 End of Custom Components                  *

@@ -12,6 +12,8 @@
 !*.png
 !*.html
 !*.svg
+!*.js
+!*.json
 !configuration/
 !configuration/*
 !custom_components/

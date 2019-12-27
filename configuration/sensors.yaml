@@ -31,3 +31,9 @@
       - /config/home-assistant.log
   - platform: version
     source: docker
+  - platform: template
+    sensors: 
+      onkyo_tx_nr757_selected_source:
+        friendly_name: Selected source
+        value_template: "{{ state_attr('media_player.onkyo_tx_nr757', 'source') }}"
+    
