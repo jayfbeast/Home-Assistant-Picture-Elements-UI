@@ -1,13 +1,144 @@
     title: Climate
     icon: mdi:radiator
+    background: center / cover no-repeat url("/local/background-lovelace/views/grey-3d-abstract-wallpaper-2560x1440.jpg") fixed
     cards:
-    - type: thermostat
-      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1
-    - type: thermostat
-      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1_2
-    - type: thermostat
-      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1_3
-    - type: thermostat
-      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1_4
-    - type: thermostat
-      entity: climate.stelpro_stzw402_electronic_thermostat_heating_1_5
+      
+#     *************************************************************
+#     *                     Kitchen Thermostat                    *
+#     *************************************************************
+
+    - type: picture-elements
+      image: /local/buttonbackground-lovelace/thermostat-kitchen.jpg
+      elements:
+        - type: custom:text-element
+          text: "Kitchen"
+          style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+        - type: custom:vertical-stack-in-card
+          cards:          
+            - type: thermostat
+              entity: climate.stelpro_stzw402_kitchen
+              name: " "
+              style: |
+                paper-icon-button {
+                  visibility: hidden
+                }
+          style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, font-size: 115%, font-weight: bold, left: 50%, top: 64.5%}
+      style: |
+        ha-card {
+          border-radius: 20px;
+          border: solid 1px rgba(100,100,100,0.3);
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+          overflow: hidden
+        }
+
+#     *************************************************************
+#     *                    Bathroom Thermostat                    *
+#     *************************************************************
+
+    - type: picture-elements
+      image: /local/buttonbackground-lovelace/thermostat-bathroom.jpg
+      elements:
+        - type: custom:text-element
+          text: "Bathroom"
+          style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+        - type: custom:vertical-stack-in-card
+          cards:          
+            - type: thermostat
+              entity: climate.stelpro_stzw402_bathroom
+              name: " "
+              style: |
+                paper-icon-button {
+                  visibility: hidden
+                }
+          style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, font-size: 115%, font-weight: bold, left: 50%, top: 64.5%}
+      style: |
+        ha-card {
+          border-radius: 20px;
+          border: solid 1px rgba(100,100,100,0.3);
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+          overflow: hidden
+        }
+
+#     *************************************************************
+#     *                 Nathan's Room Thermostat                  *
+#     *************************************************************
+
+    - type: picture-elements
+      image: /local/buttonbackground-lovelace/thermostat-kid-room.jpg
+      elements:
+        - type: custom:text-element
+          text: "Nathan's Room"
+          style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+        - type: custom:vertical-stack-in-card
+          cards:          
+            - type: thermostat
+              entity: climate.stelpro_stzw402_nathan_s_room
+              name: " "
+              style: |
+                paper-icon-button {
+                  visibility: hidden
+                }
+          style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, font-size: 115%, font-weight: bold, left: 50%, top: 64.5%}
+      style: |
+        ha-card {
+          border-radius: 20px;
+          border: solid 1px rgba(100,100,100,0.3);
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+          overflow: hidden
+        }
+
+#     *************************************************************
+#     *                   Living Room Thermostat                  *
+#     *************************************************************
+
+    - type: picture-elements
+      image: /local/buttonbackground-lovelace/thermostat-living-room.jpg
+      elements:
+        - type: custom:text-element
+          text: "Living Room"
+          style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+        - type: custom:vertical-stack-in-card
+          cards:          
+            - type: thermostat
+              entity: climate.stelpro_stzw402_living_room
+              name: " "
+              style: |
+                paper-icon-button {
+                  visibility: hidden
+                }
+          style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, font-size: 115%, font-weight: bold, left: 50%, top: 64.5%}
+      style: |
+        ha-card {
+          border-radius: 20px;
+          border: solid 1px rgba(100,100,100,0.3);
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+          overflow: hidden
+        }
+
+#     *************************************************************
+#     *                    Restroom Thermostat                    *
+#     *************************************************************
+
+    - type: picture-elements
+      image: /local/buttonbackground-lovelace/thermostat-restroom.jpg
+      elements:
+        - type: custom:text-element
+          text: "Restroom"
+          style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+        - type: custom:vertical-stack-in-card
+          cards:          
+            - type: thermostat
+              entity: climate.stelpro_stzw402_restroom
+              name: " "
+              style: |
+                paper-icon-button {
+                  visibility: hidden
+                }
+          style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, font-size: 115%, font-weight: bold, left: 50%, top: 64.5%}
+      style: |
+        ha-card {
+          border-radius: 20px;
+          border: solid 1px rgba(100,100,100,0.3);
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+          overflow: hidden
+        }

@@ -29,6 +29,8 @@ resources:
     type: js
   - url: /local/custom-lovelace/text-element/text-element.js
     type: js
+  - url: /local/custom-lovelace/auto-entities/auto-entities.js
+    type: js
 
 title: Beaudoiners Ambassy in SJSR
 views: !include_dir_list ui-lovelace/
