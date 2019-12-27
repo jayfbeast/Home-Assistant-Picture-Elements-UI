@@ -4,6 +4,11 @@
     #background: var(--lovelace-background)
     #theme: weather
     cards:
+
+#     *************************************************************
+#     *                     Christmas Tree                        *
+#     *************************************************************
+
       - type: vertical-stack
         cards:
           - type: picture-elements
@@ -101,8 +106,15 @@
                 box-shadow: 3px 3px rgba(0,0,0,0.4)
               }
 
+#     *************************************************************
+#     *              Beginning of Remote Controls                 *
+#     *************************************************************
+
           - type: vertical-stack
             cards:
+#             *************************************************************
+#             *                         PC Games                          *
+#             *************************************************************
               - type: conditional
                 conditions:
                   - entity: media_player.onkyo_tx_nr757
@@ -130,7 +142,9 @@
                       border: solid 1px rgba(100,100,100,0.3);
                       box-shadow: 3px 3px rgba(0,0,0,0.4)
                     }
-
+#             *************************************************************
+#             *                         Apple TV                          *
+#             *************************************************************
               - type: conditional
                 conditions:
                   - entity: media_player.onkyo_tx_nr757
@@ -254,6 +268,9 @@
                       box-shadow: 3px 3px rgba(0,0,0,0.4)
                       overflow: hidden
                     }
+#             *************************************************************
+#             *                            Kodi                           *
+#             *************************************************************
               - type: conditional
                 conditions:
                   - entity: media_player.onkyo_tx_nr757
@@ -503,6 +520,9 @@
                       box-shadow: 3px 3px rgba(0,0,0,0.4)
                       overflow: hidden
                     }
+#             *************************************************************
+#             *                      Nintendo Switch                      *
+#             *************************************************************
               - type: conditional
                 conditions:
                   - entity: media_player.onkyo_tx_nr757
@@ -521,6 +541,9 @@
                       box-shadow: 3px 3px rgba(0,0,0,0.4)
                       overflow: hidden
                     }
+#             *************************************************************
+#             *              Onkyo TX-NR757 Remote Control                *
+#             *************************************************************
               - type: conditional
                 conditions:
                   - entity: media_player.onkyo_tx_nr757
@@ -635,6 +658,15 @@
                       box-shadow: 3px 3px rgba(0,0,0,0.4)
                       overflow: hidden
                     }
+
+#     *************************************************************
+#     *                 End of Remote Controls                    *
+#     *************************************************************
+
+#     *************************************************************
+#     *              Onkyo TX-NR757 Volume Control                *
+#     *************************************************************
+
       - type: picture-elements
         image: /local/buttonbackground-lovelace/speaker-volume-background.jpg
         elements:
@@ -722,8 +754,9 @@
             overflow: hidden
           }
 
-
-
+#     *************************************************************
+#     *            TV Antenna (OTA TV Channels) Popup             *
+#     *************************************************************
 
       - type: horizontal-stack
         cards:
@@ -1161,6 +1194,11 @@
                 box-shadow: 3px 3px rgba(0,0,0,0.4)
                 overflow: hidden
               }
+
+#     *************************************************************
+#     *                      PC Games Popup                       *
+#     *************************************************************
+
           - type: picture-elements
             image: /local/buttonbackground-lovelace/xbox-white-controller-vertical-640x720.jpg
             elements:
@@ -1172,7 +1210,6 @@
                   service: browser_mod.popup
                   service_data:
                     title: TV Channels
-                    #large: true
                     deviceID:
                       - safarimacmini
                       - this
@@ -1180,9 +1217,6 @@
                       type: custom:vertical-stack-in-card
                       cards:
                         - type: 'custom:button-card'
-                          #color_type: label-card
-                          ##template: remote_button_round
-                          #color: rgba(150, 150, 150, 0.1)
                           name: Games (PC)
                         - type: horizontal-stack
                           cards:
@@ -1198,7 +1232,6 @@
                                   payload: '["NBA2K20.bat", "", "C:\\Games\\"]'
                                   topic: winthing/system/commands/run
                                   qos: 0
-                              #template: remote_button_round
                               icon: 'mdi:menu'
                             - type: 'custom:button-card'
                               size: 100%
@@ -1277,7 +1310,11 @@
                 box-shadow: 3px 3px rgba(0,0,0,0.4)
                 overflow: hidden
               }
-              
+
+#     *************************************************************
+#     *                Home Theater Lights Control                *
+#     *************************************************************
+
       -  type: picture-elements
          image: /local/buttonbackground-lovelace/lights-4-bars-background.jpg
          elements:
