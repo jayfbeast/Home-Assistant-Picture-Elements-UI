@@ -10,6 +10,11 @@
           - sensor.home_assistant_v2_db
           - sensor.home_assistant_log
       - type: entities
+        entities:
+          - sensor.elkm1
+        show_header_toggle: false
+        title: Alarm Components
+      - type: entities
         title: Docker
         show_header_toggle: false
         entities:
