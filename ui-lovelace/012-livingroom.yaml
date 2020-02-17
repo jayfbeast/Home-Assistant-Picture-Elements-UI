@@ -325,3 +325,11 @@
             box-shadow: 3px 3px rgba(0,0,0,0.4)
             overflow: hidden
           }
+
+
+#     *************************************************************
+#     *                      Speaker Control                      *
+#     *************************************************************
+
+      - type: custom:mini-media-player
+        entity: media_player.kitchen_living_room
