@@ -14,6 +14,7 @@
 !*.svg
 !*.js
 !*.json
+!*.xcf
 !configuration/
 !configuration/*
 !custom_components/
@@ -22,6 +23,8 @@
 !custom_graphics/*
 !custom_scripts/
 !custom_scripts/**
+!GIMP Backgrounds/
+!GIMP Backgrounds/*
 !panels/
 !panels/*
 !screenshots/
@@ -45,3 +48,6 @@
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+
+#Ignore DS Store MacOS file
+.DS_Store
