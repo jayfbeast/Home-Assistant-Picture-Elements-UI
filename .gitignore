@@ -24,6 +24,10 @@
 !custom_scripts/**
 !panels/
 !panels/*
+!screenshots/
+!screenshots/*
+!screenshots/HomeTheaterInputs/
+!screenshots/HomeTheaterInputs/*
 !themes/
 !themes/*
 !ui-lovelace/
