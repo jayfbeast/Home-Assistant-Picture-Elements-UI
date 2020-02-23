@@ -1,0 +1,207 @@
+- platform: command_line
+  switches:
+    projector_switch:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/projector.py 192.168.1.147 4999 on'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/projector.py 192.168.1.147 4999 off'
+      command_state: '/usr/local/bin/python /config/custom_scripts/ip2serial/projector.py 192.168.1.147 4999 status'
+      value_template: '{{ value == "1" }}'
+      friendly_name: 'Projector'
+    onkyo_volup:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 volup'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 volup'
+      friendly_name: "Volume Up"
+    onkyo_volupplus:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 volupplus'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 volupplus'
+      friendly_name: "Volume Up+"
+    onkyo_voldown:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 voldown'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 voldown'
+      friendly_name: "Volume Down"
+    onkyo_voldownplus:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 voldownplus'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 voldownplus'
+      friendly_name: "Volume Down+"
+    onkyo_volmute:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 volmute'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 volmute'
+      friendly_name: "Mute"
+    onkyo_volunmute:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 volunmute'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 volunmute'
+      friendly_name: "Un-Mute"
+    onkyo_subvolup:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvolup'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvolup'
+      friendly_name: "Vol. Up"
+    onkyo_subvoldown:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvoldown'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvoldown'
+      friendly_name: "Vol. Down"
+    onkyo_subvoloff:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvoloff'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvoloff'
+      friendly_name: "Off"
+    onkyo_subvolhalf:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvolhalf'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvolhalf'
+      friendly_name: "1/2"
+    onkyo_subvolmax:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvolmax'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 subvolmax'
+      friendly_name: "Max"
+    onkyo_remotemenu:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlMenu'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlMenu'
+      friendly_name: "Menu"
+    onkyo_remoteexit:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlExit'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlExit'
+      friendly_name: "Exit"
+    onkyo_remoteup:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlUp'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlUp'
+      friendly_name: "Up"
+    onkyo_remotedown:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlDown'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlDown'
+      friendly_name: "Down"
+    onkyo_remoteleft:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlLeft'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlLeft'
+      friendly_name: "Left"
+    onkyo_remoteright:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlRight'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlRight'
+      friendly_name: "Right"
+    onkyo_remoteenter:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlEnter'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlEnter'
+      friendly_name: "Enter"
+    onkyo_remoteaudioadjust:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlAudioAdjust'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlAudioAdjust'
+      friendly_name: "Audio Adj."
+    onkyo_remotevideoadjust:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlVideoAdjust'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlVideoAdjust'
+      friendly_name: "Video Adj."
+    onkyo_remotehome:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlHome'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlHome'
+      friendly_name: "Home"
+    onkyo_remotequicksetup:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlQuickSetup'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlQuickSetup'
+      friendly_name: "Setup"
+    onkyo_remoteinstaprevue:
+      command_on: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlInstaprevue'
+      command_off: '/usr/local/bin/python /config/custom_scripts/ip2serial/onkyo_amplifier.py 192.168.1.145 5000 SendCommandRemoteControlInstaprevue'
+      friendly_name: "Instaprevue"
+- platform: template
+  switches:
+      # ZONE 1 MEDIA SWITCH
+      onkyo_tx_nr757_power:
+        friendly_name: Onkyo TX-NR757
+        value_template: "{{ is_state('media_player.onkyo_tx_nr757', 'on') }}"
+        turn_on:
+          service: media_player.turn_on
+          entity_id: media_player.onkyo_tx_nr757
+        turn_off:
+          service: media_player.turn_off
+          entity_id: media_player.onkyo_tx_nr757
+      onkyo_tx_nr757_dvdinput:
+        friendly_name: Apple TV
+        value_template: "{{ is_state('media_player.onkyo_tx_nr757', 'on') and is_state_attr('media_player.onkyo_tx_nr757', 'source', 'dvd') }}"
+        turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'dvd'
+        turn_off:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'dvd'
+      onkyo_tx_nr757_video2input:
+        friendly_name: Kodi
+        value_template: "{{ is_state('media_player.onkyo_tx_nr757', 'on') and is_state_attr('media_player.onkyo_tx_nr757', 'source', 'video2') }}"
+        turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'video2'
+        turn_off:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'video2'
+      onkyo_tx_nr757_video3input:
+        friendly_name: Switch
+        value_template: "{{ is_state('media_player.onkyo_tx_nr757', 'on') and is_state_attr('media_player.onkyo_tx_nr757', 'source', 'video3') }}"
+        turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'video3'
+        turn_off:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'video3'
+      onkyo_tx_nr757_streamboxinput:
+        friendly_name: PC
+        value_template: "{{ is_state('media_player.onkyo_tx_nr757', 'on') and is_state_attr('media_player.onkyo_tx_nr757', 'source', 'strm-box') }}"
+        turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'strm-box'
+        turn_off:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'strm-box'
+      onkyo_tx_nr757_networkinput:
+        friendly_name: Network
+        value_template: "{{ is_state('media_player.onkyo_tx_nr757', 'on') and is_state_attr('media_player.onkyo_tx_nr757', 'source', 'network') }}"
+        turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'network'
+        turn_off:
+          - service: media_player.turn_on
+            entity_id: media_player.onkyo_tx_nr757
+          - delay: '00:00:01'
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.onkyo_tx_nr757
+              source: 'network'

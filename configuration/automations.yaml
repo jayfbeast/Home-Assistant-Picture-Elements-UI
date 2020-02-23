@@ -1,0 +1,21 @@
+  - alias: 'SendMailWhenBurglarAlarmIsTriggered'
+    initial_state: true
+    hide_entity:   false
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.area_001  
+        to: "triggered"
+        from: "arming"
+    action:
+      - service: notify.homeassistantmail
+        data:
+            title: "Système d'alarme déclanché"
+            message: "Le système d'alarme de la maison a été déclanché"
+  - alias: Set Onkyo TX-NR757 volume
+    trigger:
+      platform: state
+      entity_id: media_player.onkyo_tx_nr757
+    action:
+      service: notify.ios_iphone_de_mariejosee
+      data:
+        message: "request_location_update"

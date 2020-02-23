@@ -1,0 +1,1442 @@
+    title: Home Theater
+    icon: mdi:movie-open
+    background: center / cover no-repeat url("/local/background-lovelace/views/grey-3d-abstract-wallpaper-2560x1440.jpg") fixed
+    #background: var(--lovelace-background)
+    #theme: weather
+    cards:
+
+#     *************************************************************
+#     *              Home Theater Input Selection                 *
+#     *************************************************************
+
+      - type: vertical-stack
+        cards:
+          - type: picture-elements
+            #title: Motion Sensors
+            image: /local/buttonbackground-lovelace/home-theater-screen-up-down-borders.jpg
+            elements:
+              - type: state-icon
+                entity: switch.projector_switch
+                icon: mdi:power
+                style: {'--paper-item-icon-color': white, color: white, left: 25%, top: 8%}
+                tap_action:
+                  action: toggle
+              - type: custom:text-element
+                text: "Projector"
+                entity: switch.onkyo_tx_nr757_dvdinput
+                style: {color: white, left: 25%, top: 18%}
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: switch.onkyo_tx_nr757_power
+                icon: mdi:power
+                style: {'--paper-item-icon-color': white, color: white, left: 75%, top: 8%}
+                tap_action:
+                  action: toggle
+              - type: custom:text-element
+                text: "Amplifier"
+                entity: switch.onkyo_tx_nr757_dvdinput
+                style: {color: white, left: 75%, top: 18%}
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: switch.onkyo_tx_nr757_dvdinput
+                icon: mdi:apple
+                style: {'--paper-item-icon-color': white, color: white, left: 10%, top: 82%}
+                tap_action:
+                  action: toggle
+              - type: custom:text-element
+                text: "Apple TV"
+                entity: switch.onkyo_tx_nr757_dvdinput
+                style: {color: white, left: 10%, top: 92%}
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: switch.onkyo_tx_nr757_video2input
+                icon: mdi:kodi
+                style: {'--paper-item-icon-color': white, color: white, left: 30%, top: 82%}
+                tap_action:
+                  action: toggle
+              - type: custom:text-element
+                text: "Kodi"
+                entity: switch.onkyo_tx_nr757_dvdinput
+                style: {color: white, left: 30%, top: 92%}
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: switch.onkyo_tx_nr757_streamboxinput
+                icon: mdi:gamepad-variant
+                style: {'--paper-item-icon-color': white, color: white, left: 50%, top: 82%}
+                tap_action:
+                  action: toggle
+              - type: custom:text-element
+                text: "PC"
+                entity: switch.onkyo_tx_nr757_dvdinput
+                style: {color: white, left: 50%, top: 92%}
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: switch.onkyo_tx_nr757_video3input
+                icon: mdi:nintendo-switch
+                style: {'--paper-item-icon-color': white, color: white, left: 70%, top: 82%}
+                tap_action:
+                  action: toggle
+              - type: custom:text-element
+                text: "Switch"
+                entity: switch.onkyo_tx_nr757_dvdinput
+                style: {color: white, left: 70%, top: 92%}
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: switch.onkyo_tx_nr757_networkinput
+                icon: mdi:lan
+                style: {'--paper-item-icon-color': white, color: white, left: 90%, top: 82%}
+                tap_action:
+                  action: toggle
+              - type: custom:text-element
+                text: "Network"
+                entity: switch.onkyo_tx_nr757_dvdinput
+                style: {color: white, left: 90%, top: 92%}
+                tap_action:
+                  action: toggle
+            style: |
+              ha-card {
+                border-radius: 20px;
+                border: solid 1px rgba(100,100,100,0.3);
+                box-shadow: 3px 3px rgba(0,0,0,0.4)
+              }
+
+#     *************************************************************
+#     *              Beginning of Remote Controls                 *
+#     *************************************************************
+
+          - type: vertical-stack
+            cards:
+#             *************************************************************
+#             *                         PC Games                          *
+#             *************************************************************
+              - type: conditional
+                conditions:
+                  - entity: media_player.onkyo_tx_nr757
+                    state: "on"
+                  - entity: sensor.onkyo_tx_nr757_selected_source
+                    state: "strm-box"
+                card:
+                  type: picture-elements
+                  image: /local/buttonbackground-lovelace/xbox-joystick-console-white.jpg
+                  elements:
+                    - type: image
+                      image: /local/graphics-lovelace/gamesicon/2K20-Logo.png
+                      style: {color: white, left: 25%, top: 50%}
+                      tap_action:
+                        action: call-service
+                        service: mqtt.publish
+                        service_data:
+                          retain: 0
+                          payload: '["NBA2K20.bat", "", "C:\\Games\\"]'
+                          topic: winthing/system/commands/run
+                          qos: 0
+                  style: |
+                    ha-card {
+                      border-radius: 20px;
+                      border: solid 1px rgba(100,100,100,0.3);
+                      box-shadow: 3px 3px rgba(0,0,0,0.4)
+                    }
+#             *************************************************************
+#             *                         Apple TV                          *
+#             *************************************************************
+              - type: conditional
+                conditions:
+                  - entity: media_player.onkyo_tx_nr757
+                    state: "on"
+                  - entity: sensor.onkyo_tx_nr757_selected_source
+                    state: "dvd"
+                card:
+                  type: picture-elements
+                  image: /local/buttonbackground-lovelace/appletv-apps-3bars.jpg
+                  elements:
+                    - type: icon
+                      icon: mdi:menu
+                      style: {'--paper-item-icon-color': white, color: white, left: 15%, top: 8%}
+                      tap_action:
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          entity_id: remote.home_theater
+                          command: 
+                            - menu
+                    - type: custom:text-element
+                      text: "Menu/Back"
+                      style: {color: white, left: 15%, top: 18%}
+                      tap_action:
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          entity_id: remote.home_theater
+                          command: 
+                            - menu
+                    - type: icon
+                      icon: mdi:arrow-up-bold-circle
+                      style: {'--paper-item-icon-color': white, color: white, left: 50%, top: 12%, --iron-icon-height: 60px, --iron-icon-width: 60px}
+                      tap_action:
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          entity_id: remote.home_theater
+                          command: 
+                            - up
+                    - type: icon
+                      icon: mdi:menu
+                      style: {'--paper-item-icon-color': white, color: white, left: 85%, top: 8%}
+                      tap_action:
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          entity_id: remote.home_theater
+                          command: 
+                            - top_menu
+                    - type: custom:text-element
+                      text: "Home"
+                      style: {color: white, left: 85%, top: 18%}
+                      tap_action:
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          entity_id: remote.home_theater
+                          command: 
+                            - top_menu
+                    - type: icon
+                      icon: mdi:arrow-left-bold-circle
+                      style: {'--paper-item-icon-color': white, color: white, left: 15%, top: 50%, --iron-icon-height: 60px, --iron-icon-width: 60px}
+                      tap_action:
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          entity_id: remote.home_theater
+                          command: 
+                            - left
+                    - type: icon
+                      icon: mdi:check-circle
+                      style: {'--paper-item-icon-color': white, color: white, left: 50%, top: 50%, --iron-icon-height: 60px, --iron-icon-width: 60px}
+                      tap_action:
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          entity_id: remote.home_theater
+                          command: 
+                            - select
+                    - type: icon
+                      icon: mdi:arrow-right-bold-circle
+                      style: {'--paper-item-icon-color': white, color: white, left: 85%, top: 50%, --iron-icon-height: 60px, --iron-icon-width: 60px}
+                      tap_action:
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          entity_id: remote.home_theater
+                          command: 
+                            - right
+                    - type: icon
+                      icon: 'mdi:play-pause'
+                      style: {'--paper-item-icon-color': white, color: white, left: 15%, top: 86%}
+                      tap_action:
+                        action: call-service
+                        service: media_player.media_play_pause
+                        service_data:
+                          entity_id: media_player.home_theater
+                    - type: custom:text-element
+                      text: "Menu/Back"
+                      style: {color: white, left: 15%, top: 95%}
+                      tap_action:
+                        action: call-service
+                        service: media_player.media_play_pause
+                        service_data:
+                          entity_id: media_player.home_theater
+                    - type: icon
+                      icon: mdi:arrow-down-bold-circle
+                      style: {'--paper-item-icon-color': white, color: white, left: 50%, top: 88%, --iron-icon-height: 60px, --iron-icon-width: 60px}
+                      tap_action:
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          entity_id: remote.home_theater
+                          command: 
+                            - down
+                  style: |
+                    ha-card {
+                      border-radius: 20px;
+                      border: solid 1px rgba(100,100,100,0.3);
+                      box-shadow: 3px 3px rgba(0,0,0,0.4)
+                      overflow: hidden
+                    }
+#             *************************************************************
+#             *                            Kodi                           *
+#             *************************************************************
+              - type: conditional
+                conditions:
+                  - entity: media_player.onkyo_tx_nr757
+                    state: "on"
+                  - entity: sensor.onkyo_tx_nr757_selected_source
+                    state: "video2"
+                card:
+                  type: picture-elements
+                  image: /local/buttonbackground-lovelace/kodi-remote-background.jpg
+                  elements:
+                    - type: 'custom:button-card'
+                      icon: 'mdi:menu'
+                      name: Menu
+                      size: 30px
+                      show_name: true
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.ContextMenu
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 10%, top: 12%}
+                    - type: 'custom:button-card'
+                      icon: 'mdi:arrow-up-bold-circle'
+                      size: 60px
+                      hold_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.Up
+                          entity_id: media_player.kodi_home_theater
+                        repeat: 100
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.Up
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 30%, top: 12%}
+                    - icon: 'mdi:backburger'
+                      type: 'custom:button-card'
+                      show_name: true
+                      name: Return
+                      size: 30px
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.Back
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 50%, top: 12%}
+                    - icon: 'mdi:home'
+                      type: 'custom:button-card'
+                      name: Home
+                      size: 30px
+                      show_name: true
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.Home
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 70%, top: 12%}
+                    - icon: 'mdi:information-outline'
+                      type: 'custom:button-card'
+                      name: Info
+                      size: 30px
+                      show_name: true
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.Info
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 90%, top: 12%}          
+                    - type: 'custom:button-card'
+                      icon: 'mdi:arrow-left-bold-circle'
+                      size: 60px
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.Left
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 10%, top: 50%}   
+                    - type: 'custom:button-card'
+                      icon: 'mdi:arrow-down-bold-circle'
+                      size: 60px
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.Down
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 30%, top: 50%}   
+                    - type: 'custom:button-card'
+                      icon: 'mdi:arrow-right-bold-circle'
+                      size: 60px
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.Right
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 50%, top: 50%}   
+                    - type: 'custom:button-card'
+                      icon: 'mdi:check-circle'
+                      size: 60px
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.Select
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 70%, top: 50%} 
+                    - type: 'custom:button-card'
+                      icon: 'mdi:chevron-double-up'
+                      size: 60px
+                      hold_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.ExecuteAction
+                          entity_id: media_player.kodi_home_theater
+                          action: pageup
+                        repeat: 100
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.ExecuteAction
+                          entity_id: media_player.kodi_home_theater
+                          action: pageup
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 90%, top: 50%} 
+                    - type: 'custom:button-card'
+                      icon: 'mdi:chevron-double-left'
+                      size: 60px
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.ExecuteAction
+                          entity_id: media_player.kodi_home_theater
+                          action: stepback
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 10%, top: 88%}                       
+                    - type: 'custom:button-card'
+                      icon: 'mdi:pause'
+                      size: 60px
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.ExecuteAction
+                          action: playpause
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 30%, top: 88%}   
+                    - type: 'custom:button-card'
+                      icon: 'mdi:chevron-double-right'
+                      size: 60px
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.ExecuteAction
+                          action: stepforward
+                          entity_id: media_player.kodi_home_theater
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 50%, top: 88%}   
+                    - type: 'custom:button-card'
+                      icon: 'mdi:stop'
+                      size: 60px
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.ExecuteAction
+                          entity_id: media_player.kodi_home_theater
+                          action: stop
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 70%, top: 88%}   
+                    - type: 'custom:button-card'
+                      icon: 'mdi:chevron-double-down'
+                      size: 60px
+                      hold_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.ExecuteAction
+                          entity_id: media_player.kodi_home_theater
+                          action: pagedown
+                        repeat: 100
+                      tap_action:
+                        service: kodi.call_method
+                        action: call-service
+                        service_data:
+                          method: Input.ExecuteAction
+                          entity_id: media_player.kodi_home_theater
+                          action: pagedown
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 90%, top: 88%}   
+                  style: |
+                    ha-card {
+                      border-radius: 20px;
+                      border: solid 1px rgba(100,100,100,0.3);
+                      box-shadow: 3px 3px rgba(0,0,0,0.4)
+                      overflow: hidden
+                    }
+#             *************************************************************
+#             *                      Nintendo Switch                      *
+#             *************************************************************
+              - type: conditional
+                conditions:
+                  - entity: media_player.onkyo_tx_nr757
+                    state: "on"
+                  - entity: sensor.onkyo_tx_nr757_selected_source
+                    state: "video3"
+                card:
+                  type: picture-elements
+                  image: /local/buttonbackground-lovelace/nintendo-switch-darker-wallpaper.jpg
+                  elements:
+                    - type: custom:button-card
+                  style: |
+                    ha-card {
+                      border-radius: 20px;
+                      border: solid 1px rgba(100,100,100,0.3);
+                      box-shadow: 3px 3px rgba(0,0,0,0.4)
+                      overflow: hidden
+                    }
+#             *************************************************************
+#             *              Onkyo TX-NR757 Remote Control                *
+#             *************************************************************
+              - type: conditional
+                conditions:
+                  - entity: media_player.onkyo_tx_nr757
+                    state: "on"
+                  - entity: sensor.onkyo_tx_nr757_selected_source
+                    state: "network"
+                card:
+                  type: picture-elements
+                  image: /local/buttonbackground-lovelace/remote-control-black-sony-command-wallpaper.jpg
+                  elements:
+                    - type: custom:button-card
+                      entity: switch.onkyo_remotemenu
+                      icon: mdi:menu
+                      size: 30px
+                      state:
+                        - value: 'on'
+                          color: white
+                        - value: 'off'
+                          color: white
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 15%, top: 12%}
+                    - type: custom:button-card
+                      entity: switch.onkyo_remoteup
+                      icon: mdi:arrow-up-bold-circle
+                      size: 60px
+                      show_name: false
+                      state:
+                        - value: 'on'
+                          color: white
+                        - value: 'off'
+                          color: white
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 50%, top: 12%}
+                    - type: custom:button-card
+                      entity: switch.onkyo_remotequicksetup
+                      icon: mdi:settings
+                      size: 30px
+                      state:
+                        - value: 'on'
+                          color: white
+                        - value: 'off'
+                          color: white
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 85%, top: 12%}          
+                    - type: custom:button-card
+                      entity: switch.onkyo_remoteleft
+                      icon: mdi:arrow-left-bold-circle
+                      size: 60px
+                      show_name: false
+                      state:
+                        - value: 'on'
+                          color: white
+                        - value: 'off'
+                          color: white
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 15%, top: 50%}   
+                    - type: custom:button-card
+                      entity: switch.onkyo_remoteenter
+                      icon: mdi:location-enter
+                      size: 30px
+                      state:
+                        - value: 'on'
+                          color: white
+                        - value: 'off'
+                          color: white
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 50%, top: 50%}   
+                    - type: custom:button-card
+                      entity: switch.onkyo_remoteright
+                      icon: mdi:arrow-right-bold-circle
+                      size: 60px
+                      show_name: false
+                      state:
+                        - value: 'on'
+                          color: white
+                        - value: 'off'
+                          color: white
+                      styles:
+                        card:
+                          - box-shadow: 'none'
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 85%, top: 50%}   
+                    - type: custom:button-card
+                      entity: switch.onkyo_remoteexit
+                      icon: mdi:exit-run
+                      size: 30px
+                      state:
+                        - value: 'on'
+                          color: white
+                        - value: 'off'
+                          color: white
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 15%, top: 88%}                       
+                    - type: custom:button-card
+                      entity: switch.onkyo_remotedown
+                      icon: mdi:arrow-down-bold-circle
+                      size: 60px
+                      show_name: false
+                      state:
+                        - value: 'on'
+                          color: white
+                        - value: 'off'
+                          color: white
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 50%, top: 88%}   
+                    - type: custom:button-card
+                      entity: switch.onkyo_remotehome
+                      icon: mdi:home
+                      size: 30px
+                      state:
+                        - value: 'on'
+                          color: white
+                        - value: 'off'
+                          color: white
+                      style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 85%, top: 88%}   
+                  style: |
+                    ha-card {
+                      border-radius: 20px;
+                      border: solid 1px rgba(100,100,100,0.3);
+                      box-shadow: 3px 3px rgba(0,0,0,0.4)
+                      overflow: hidden
+                    }
+
+#     *************************************************************
+#     *                 End of Remote Controls                    *
+#     *************************************************************
+
+#     *************************************************************
+#     *              Onkyo TX-NR757 Volume Control                *
+#     *************************************************************
+
+      - type: picture-elements
+        image: /local/buttonbackground-lovelace/speaker-volume-background.jpg
+        elements:
+          - type: custom:text-element
+            text: "Speakers Volume"
+            entity: switch.onkyo_tx_nr757
+            style: {color: white, left: 18%, top: 12%, font-size: 115%, font-weight: bold}
+          - type: custom:slider-entity-row
+            entity: media_player.onkyo_tx_nr757
+            full_row: true
+            style: {width: 90%, color: white, left: 50%, top: 33%}
+          - type: custom:text-element
+            text: "Subwoofers Volume"
+            style: {color: white, left: 20.5%, top: 60%, font-size: 115%, font-weight: bold}
+          - type: custom:button-card
+            entity: switch.onkyo_subvoloff
+            icon: 'mdi:volume-off'
+            size: 30px
+            state:
+              - value: 'on'
+                color: white
+              - value: 'off'
+                color: white
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 20%, top: 81%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: custom:button-card
+            entity: switch.onkyo_subvolhalf
+            icon: 'mdi:volume-medium'
+            size: 30px
+            state:
+              - value: 'on'
+                color: white
+              - value: 'off'
+                color: white
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 35%, top: 81%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: custom:button-card
+            entity: switch.onkyo_subvolmax
+            icon: 'mdi:volume-vibrate'
+            size: 30px
+            state:
+              - value: 'on'
+                color: white
+              - value: 'off'
+                color: white
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 50%, top: 81%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: custom:button-card
+            entity: switch.onkyo_subvoldown
+            icon: 'mdi:volume-minus'
+            size: 30px
+            state:
+              - value: 'on'
+                color: white
+              - value: 'off'
+                color: white
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 65%, top: 81%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: custom:button-card
+            entity: switch.onkyo_subvolup
+            icon: 'mdi:volume-plus'
+            size: 30px
+            state:
+              - value: 'on'
+                color: white
+              - value: 'off'
+                color: white
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 80%, top: 81%}
+            styles:
+              card:
+                - box-shadow: 'none'
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4)
+            overflow: hidden
+          }
+
+#     *************************************************************
+#     *            TV Antenna (OTA TV Channels) Popup             *
+#     *************************************************************
+
+      - type: horizontal-stack
+        cards:
+          - type: picture-elements
+            image: /local/buttonbackground-lovelace/exterior-tv-antenna-vertical-640x720.jpg
+            elements:
+              - type: icon
+                icon: 'mdi:dock-window'
+                style: {'--paper-item-icon-color': white, color: white, --iron-icon-height: 60px, --iron-icon-width: 60px, left: 50%, top: 88%}
+                tap_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: TV Channels
+                    #large: true
+                    deviceID:
+                      - this
+                    card:
+                      type: custom:vertical-stack-in-card
+                      cards:
+                        - type: 'custom:button-card'
+                          name: OTA TV Channels
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/44_1-FOX.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_fox
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/3_1-CBS.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_cbs
+                              icon: 'mdi:menu'
+                            - type: 'custom:button-card'
+                              size: 70%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/5_1-NBC.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_nbc
+                            - type: 'custom:button-card'
+                              size: 50%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/22_1-ABC.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_abc
+                              icon: 'mdi:menu'
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/5_2-TheCW.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_thecw
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/10_1-TVA.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_tva
+                              icon: 'mdi:menu'
+                            - type: 'custom:button-card'
+                              size: 50%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/2_1-Ici_Television_2.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_radiocanada
+                            - type: 'custom:button-card'
+                              size: 50%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/35_1-V.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_v
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/17_1-TeleQuebec.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_telequebec
+                              icon: 'mdi:menu'
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/12_1-CTV.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_ctv
+                            - type: 'custom:button-card'
+                              size: 50%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/6_1-CBC.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_cbc
+                              icon: 'mdi:menu'
+                            - type: 'custom:button-card'
+                              size: 80%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/15_1-Global.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_global
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 80%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/62_1-City.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_citytv
+                            - type: 'custom:button-card'
+                              size: 50%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/47_1-ICI_Montreal.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_icimontreal
+                              icon: 'mdi:menu'
+                            - type: 'custom:button-card'
+                              size: 60%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/29_1-CanalSavoir.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_canalsavoir
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/33_1-VTPBS.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_vtpbs
+                              icon: 'mdi:menu'
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/33_2-VTPBSPlus.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_vtpbsplus
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/33_3-Create.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_vtcreate
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/33_4-VTPBSKids.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_vtpbskids
+                              icon: 'mdi:menu'
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/44_2-Escape.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_escape
+                              icon: 'mdi:menu'
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 60%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/57_3-MLPBSKids.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_mntnlakepbskids
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/44_3-Bounce.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_bounce
+                              icon: 'mdi:menu'
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/22_3-Grit.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_grit
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/57_1-MLPBS.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_mntnlakepbs
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 50%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/57_2-MHZW.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_mntnlakemhzw
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/3_3-Ion.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_ion
+                              icon: 'mdi:menu'
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/5_3-MeTV.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_metv
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/22_2-Laff_2.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_laff
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 50%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/3_2-Movies.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_movies
+                            - type: 'custom:button-card'
+                              size: 90%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/3_4-StartTV.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_starttv
+                            - type: 'custom:button-card'
+                              size: 80%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/tvchannelsicon/22_4-Quest.png
+                              tap_action:
+                                service: kodi.call_method
+                                action: call-service
+                                service_data:
+                                  entity_id: media_player.kodi_home_theater
+                                  method: Player.Open
+                                  item:
+                                    channelid: !secret channelid_quest
+                            - type: 'custom:button-card'
+              - type: custom:text-element
+                text: "TV Channels"
+                style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+                tap_action:
+                  action: call-service
+                  service: media_player.media_play_pause
+                  service_data:
+                    entity_id: media_player.home_theater
+            style: |
+              ha-card {
+                border-radius: 20px;
+                border: solid 1px rgba(100,100,100,0.3);
+                box-shadow: 3px 3px rgba(0,0,0,0.4)
+                overflow: hidden
+              }
+
+#     *************************************************************
+#     *                      PC Games Popup                       *
+#     *************************************************************
+
+          - type: picture-elements
+            image: /local/buttonbackground-lovelace/xbox-white-controller-vertical-640x720.jpg
+            elements:
+              - type: icon
+                icon: 'mdi:dock-window'
+                style: {'--paper-item-icon-color': white, color: white, --iron-icon-height: 60px, --iron-icon-width: 60px, left: 50%, top: 88%}
+                tap_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: TV Channels
+                    deviceID:
+                      - safarimacmini
+                      - this
+                    card:
+                      type: custom:vertical-stack-in-card
+                      cards:
+                        - type: 'custom:button-card'
+                          name: Games (PC)
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 100%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/gamesicon/2K20-Logo.png
+                              tap_action:
+                                action: call-service
+                                service: mqtt.publish
+                                service_data:
+                                  retain: 0
+                                  payload: '["NBA2K20.bat", "", "C:\\Games\\"]'
+                                  topic: winthing/system/commands/run
+                                  qos: 0
+                              icon: 'mdi:menu'
+                            - type: 'custom:button-card'
+                              size: 100%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/gamesicon/shooter.png
+                              tap_action:
+                                action: call-service
+                                service: mqtt.publish
+                                service_data:
+                                  retain: 0
+                                  payload: '["shooter.bat", "", "C:\\Games\\"]'
+                                  topic: winthing/system/commands/run
+                                  qos: 0
+                            - type: 'custom:button-card'
+                              size: 100%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/gamesicon/monsters_hd_ultimate.png
+                              tap_action:
+                                action: call-service
+                                service: mqtt.publish
+                                service_data:
+                                  retain: 0
+                                  payload: '["shooter.bat", "", "C:\\Games\\"]'
+                                  topic: winthing/system/commands/run
+                                  qos: 0
+                        - type: horizontal-stack
+                          cards:
+                            - type: 'custom:button-card'
+                              size: 100%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/gamesicon/rocket-league.png
+                              tap_action:
+                                action: call-service
+                                service: mqtt.publish
+                                service_data:
+                                  retain: 0
+                                  payload: '["shooter.bat", "", "C:\\Games\\"]'
+                                  topic: winthing/system/commands/run
+                                  qos: 0
+                            - type: 'custom:button-card'
+                              size: 100%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/gamesicon/FIFA_19_Logo.png
+                              tap_action:
+                                action: call-service
+                                service: mqtt.publish
+                                service_data:
+                                  retain: 0
+                                  payload: '["shooter.bat", "", "C:\\Games\\"]'
+                                  topic: winthing/system/commands/run
+                                  qos: 0
+                            - type: 'custom:button-card'
+                              size: 100%
+                              show_entity_picture: true
+                              entity_picture: /local/graphics-lovelace/gamesicon/need-for-speed-payback.png
+                              tap_action:
+                                action: call-service
+                                service: mqtt.publish
+                                service_data:
+                                  retain: 0
+                                  payload: '["shooter.bat", "", "C:\\Games\\"]'
+                                  topic: winthing/system/commands/run
+                                  qos: 0
+              - type: custom:text-element
+                text: "Video Games"
+                style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+                tap_action:
+                  action: call-service
+                  service: media_player.media_play_pause
+                  service_data:
+                    entity_id: media_player.home_theater
+            style: |
+              ha-card {
+                border-radius: 20px;
+                border: solid 1px rgba(100,100,100,0.3);
+                box-shadow: 3px 3px rgba(0,0,0,0.4)
+                overflow: hidden
+              }
+
+#     *************************************************************
+#     *                Home Theater Lights Control                *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/lights-4-bars-background.jpg
+         elements:
+            - type: custom:text-element
+              text: "Wall"
+              style: {color: white, left: 10%, top: 19%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.basement_wall
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 19.5%}
+            - type: 'custom:button-card'
+              entity: light.basement_wall
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: white
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 19.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Front"
+              style: {color: white, left: 10.5%, top: 40%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.basement_home_theater
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 40.5%}
+            - type: 'custom:button-card'
+              entity: light.basement_home_theater
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: white
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 40.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Rear"
+              style: {color: white, left: 10%, top: 62%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.basement_playroom
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 62.5%}
+            - type: 'custom:button-card'
+              entity: light.basement_playroom
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: white
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 62.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Stairs"
+              style: {color: white, left: 11%, top: 83%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.basement_stairs
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 83.5%}
+            - type: 'custom:button-card'
+              entity: light.basement_stairs
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: white
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 83.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

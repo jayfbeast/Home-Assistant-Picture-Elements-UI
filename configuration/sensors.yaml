@@ -1,0 +1,39 @@
+  - platform: uptime
+    name: Time Online
+    unit_of_measurement: hours
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ (value | multiply(0.001)) | round(1) }}'
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: disk_use
+        arg: /
+      - type: disk_free
+        arg: /
+      - type: memory_use_percent
+      - type: memory_use
+      - type: memory_free
+      - type: swap_use_percent
+      - type: swap_use
+      - type: swap_free
+      - type: load_1m
+      - type: load_5m
+      - type: load_15m
+      - type: processor_use
+      - type: last_boot
+  - platform: filesize
+    file_paths:
+      - /config/home-assistant_v2.db
+      - /config/home-assistant.log
+  - platform: version
+    source: docker
+  - platform: template
+    sensors: 
+      onkyo_tx_nr757_selected_source:
+        friendly_name: Selected source
+        value_template: "{{ state_attr('media_player.onkyo_tx_nr757', 'source') }}"
+    

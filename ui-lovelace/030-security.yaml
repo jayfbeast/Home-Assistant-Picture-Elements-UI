@@ -1,0 +1,318 @@
+    title: Security
+    icon: mdi:security
+    background: center / cover no-repeat url("/local/background-lovelace/views/grey-3d-abstract-wallpaper-2560x1440.jpg") fixed
+    cards:
+
+#     *************************************************************
+#     *                       Alarm Keypad                        *
+#     *************************************************************
+
+      - type: picture-elements
+        image: /local/buttonbackground-lovelace/alarm-pcb-background.jpg
+        elements:
+          - type: custom:vertical-stack-in-card
+            cards:          
+              - type: alarm-panel
+                entity: alarm_control_panel.area_001
+                name: Home
+                style: |
+                  ha-card {
+                    background-image: url("/local/buttonbackground-lovelace/alarm-keypad-background.png")
+                  }
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, color: white, width: 70%, font-color: white, left: 50%, top: 50%}
+            styles:
+              card:
+                - box-shadow: 'none'
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4);
+            overflow: hidden;
+            --mdc-theme-primary: white
+          }
+
+#     *************************************************************
+#     *                       Door Contacts                       *
+#     *************************************************************
+
+      - type: picture-elements
+        image: /local/buttonbackground-lovelace/door-background.jpg
+        elements:
+          - type: 'custom:button-card'
+            entity: sensor.zone_001
+            size: 30px
+            name: Entrance   
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:door-closed
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:door-open
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 25%, top: 26%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_008
+            size: 30px
+            name: Patio   
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:door-closed
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:door-open
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 75%, top: 26%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_002
+            size: 30px   
+            name: Garage
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:garage
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:garage-open
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 25%, top: 73%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_003
+            size: 30px
+            name: Rear Garage   
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:door-closed
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:door-open
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 75%, top: 73%}
+            styles:
+              card:
+                - box-shadow: 'none'
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4)
+            overflow: hidden
+          }
+
+#     *************************************************************
+#     *                      Window Contacts                      *
+#     *************************************************************
+
+      - type: picture-elements
+        image: /local/buttonbackground-lovelace/window-background.jpg
+        elements:
+          - type: 'custom:button-card'
+            entity: sensor.zone_004
+            size: 30px
+            name: Front (small)
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:window-closed-variant
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:window-open-variant
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 25%, top: 26%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_007
+            size: 30px
+            name: Kitchen   
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:window-closed-variant
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:window-open-variant
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 75%, top: 26%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_013
+            size: 30px   
+            name: Laundry Room
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:window-closed-variant
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:window-open-variant
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 25%, top: 73%}
+            styles:
+              card:
+                - box-shadow: 'none'
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4)
+            overflow: hidden
+          }
+
+#     *************************************************************
+#     *                Smoke/Monoxide Detectors                   *
+#     *************************************************************
+
+      - type: picture-elements
+        image: /local/buttonbackground-lovelace/smoke-detector-background.jpg
+        elements:
+          - type: 'custom:button-card'
+            entity: sensor.zone_015
+            size: 30px
+            name: Ground Level
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:smoke-detector
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:smoke-detector
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 20%, top: 26%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_014
+            size: 30px
+            name: Second Floor
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:smoke-detector
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:smoke-detector
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 50%, top: 26%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_014
+            size: 30px
+            name: Basement
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:close-box
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:close-box
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 80%, top: 26%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_012
+            size: 30px
+            name: Ground Level
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:close-box
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:close-box
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 20%, top: 73%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_012
+            size: 30px
+            name: Second Floor
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:periodic-table-co2
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:periodic-table-co2
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 50%, top: 73%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_011
+            size: 30px
+            name: Basement
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:periodic-table-co2
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:periodic-table-co2
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 80%, top: 73%}
+            styles:
+              card:
+                - box-shadow: 'none'
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4)
+            overflow: hidden
+          }
+
+#     *************************************************************
+#     *                     Motion Detectors                      *
+#     *************************************************************
+
+      - type: picture-elements
+        image: /local/buttonbackground-lovelace/motion-detector-background.jpg
+        elements:
+          - type: 'custom:button-card'
+            entity: sensor.zone_009
+            size: 30px
+            name: Ground Level   
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:motion-sensor
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:motion-sensor
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 25%, top: 51%}
+            styles:
+              card:
+                - box-shadow: 'none'
+          - type: 'custom:button-card'
+            entity: sensor.zone_010
+            size: 30px
+            name: Basement   
+            state:
+              - value: 'Normal'
+                color: white
+                icon: mdi:motion-sensor
+              - value: 'Violated'
+                color: yellow
+                icon: mdi:motion-sensor
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, left: 75%, top: 51%}
+            styles:
+              card:
+                - box-shadow: 'none'
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4)
+            overflow: hidden
+          }

@@ -1,0 +1,36 @@
+resources:
+  - url: /local/custom-lovelace/weather-card/weather-card.js
+    type: module
+  - url: /local/custom-lovelace/mini-graph-card/mini-graph-card-bundle.js?v=0.6.0
+    type: module
+  - url: /local/custom-lovelace/bar-card/bar-card.js
+    type: module
+  - url: /local/custom-lovelace/vertical-stack-in-card/vertical-stack-in-card.js
+    type: module
+  - url: /local/custom-lovelace/mini-media-player/mini-media-player-bundle.js
+    type: module 
+  - url: /local/custom-lovelace/card-tools/card-tools.js
+    type: js
+  - url: /local/custom-lovelace/button-card/button-card.js
+    type: module 
+  - url: /local/custom-lovelace/spotify-card/spotify-card.umd.js
+    type: module 
+  - url: /local/custom-lovelace/layout-card/layout-card.js
+    type: module 
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.1
+    type: module
+  - url: /local/custom-lovelace/rgb-light-card/rgb-light-card.js
+    type: js
+  - url: /local/custom-lovelace/slider-entity-row/slider-entity-row.js
+    type: module
+  - url: /local/custom-lovelace/card-mod/card-mod.js
+    type: module
+  - url: /local/custom-lovelace/now-playing-card/now-playing-card.js
+    type: js
+  - url: /local/custom-lovelace/text-element/text-element.js
+    type: js
+  - url: /local/custom-lovelace/auto-entities/auto-entities.js
+    type: js
+
+title: JayFBeast Ambassy
+views: !include_dir_list ui-lovelace/

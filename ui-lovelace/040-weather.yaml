@@ -1,0 +1,14 @@
+    title: Weather
+    icon: mdi:weather-sunny
+    background: center / cover no-repeat url("/local/background-lovelace/views/weather.jpg") fixed
+    #background: var(--lovelace-background)
+    theme: weather
+    cards:
+      - type: entities
+        title: Sunlight Information
+        show_header_toggle: fals
+        entities:
+          - sun.sun
+      - type: custom:weather-card
+        entity: weather.home
+        icons: "/local/custom-lovelace/weather-card/icons/"

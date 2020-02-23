@@ -1,0 +1,5 @@
+  - platform: group
+    name: Basement RGB Lights
+    entities:
+      - light.lifx_light_30ccf3
+      - light.lifx_gu10_30c421

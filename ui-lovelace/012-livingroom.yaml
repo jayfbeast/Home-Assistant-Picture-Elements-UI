@@ -1,0 +1,327 @@
+    title: Living Room
+    icon: mdi:sofa
+    background: center / cover no-repeat url("/local/background-lovelace/views/grey-3d-abstract-wallpaper-2560x1440.jpg") fixed
+    #background: var(--lovelace-background)
+    #theme: weather
+    cards:
+
+#     *************************************************************
+#     *                     TV Remote Control                     *
+#     *************************************************************
+
+      - type: picture-elements
+        image: /local/buttonbackground-lovelace/tv-remote-control-livingroom-background.jpg
+        elements:
+          - type: 'custom:button-card'
+            icon: 'mdi:import'
+            size: 60px
+            show_name: true
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Input"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 10%, top: 12%}
+          - type: 'custom:button-card'
+            icon: 'mdi:arrow-up-bold-circle'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Up"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 30%, top: 12%}
+          - icon: 'mdi:backup-restore'
+            type: 'custom:button-card'
+            show_name: true
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Back"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 50%, top: 12%}
+          - icon: 'mdi:volume-mute'
+            type: 'custom:button-card'
+            size: 60px
+            show_name: true
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Mute"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 70%, top: 12%}
+          - icon: 'mdi:power'
+            type: 'custom:button-card'
+            size: 60px
+            show_name: true
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Power"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 90%, top: 12%}          
+          - type: 'custom:button-card'
+            icon: 'mdi:arrow-left-bold-circle'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Left"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 10%, top: 50%}   
+          - type: 'custom:button-card'
+            icon: 'mdi:checkbox-marked-circle-outline'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Enter"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 30%, top: 50%}   
+          - type: 'custom:button-card'
+            icon: 'mdi:arrow-right-bold-circle'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Right"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 50%, top: 50%}   
+          - type: 'custom:button-card'
+            icon: 'mdi:volume-plus'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Volume Up"
+            hold_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Volume Up"
+              repeat: 100
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 70%, top: 50%} 
+          - type: 'custom:button-card'
+            icon: 'mdi:menu'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Quick Menu"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 90%, top: 50%} 
+          - type: 'custom:button-card'
+            icon: 'mdi:exit-run'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Exit"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 10%, top: 88%}                       
+          - type: 'custom:button-card'
+            icon: 'mdi:arrow-right-bold-circle'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Down"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 30%, top: 88%}   
+          - type: 'custom:button-card'
+            icon: 'mdi:information-variant'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Info"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 50%, top: 88%}   
+          - type: 'custom:button-card'
+            icon: 'mdi:volume-minus'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Volume Down"
+            hold_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Volume Down"
+              repeat: 100
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 70%, top: 88%}   
+          - type: 'custom:button-card'
+            icon: 'mdi:settings'
+            size: 60px
+            tap_action:
+              service: remote.send_command
+              action: call-service
+              service_data:
+                entity_id: remote.tv
+                command: "Menu"
+            styles:
+              card:
+                - box-shadow: 'none'
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --paper-item-icon-color: white, color: white, left: 90%, top: 88%}   
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4)
+            overflow: hidden
+          }
+
+
+#     *************************************************************
+#     *                Living Room Lights Control                 *
+#     *************************************************************
+
+      -  type: picture-elements
+         image: /local/buttonbackground-lovelace/lights-2-bars-background-2.jpg
+         elements:
+            - type: custom:text-element
+              text: "Light"
+              style: {color: white, left: 10%, top: 19%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.living_room
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 19.5%}
+            - type: 'custom:button-card'
+              entity: light.living_room
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 19.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+            - type: custom:text-element
+              text: "Center"
+              style: {color: white, left: 10.5%, top: 40%, font-size: 115%, font-weight: bold}
+            - type: custom:slider-entity-row
+              entity: light.living_room_center_light
+              full_row: true
+              style: {width: 60%, color: white, left: 50%, top: 40.5%}
+            - type: 'custom:button-card'
+              entity: light.living_room_center_light
+              size: 50px
+              show_name: false
+              tap_action:
+                action: toggle
+              state:
+                - value: 'on'
+                  color: white
+                  icon: mdi:toggle-switch
+                - value: 'off'
+                  color: grey
+                  icon: mdi:toggle-switch-off
+              style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, left: 90%, top: 40.5%}
+              styles:
+                card:
+                  - box-shadow: 'none'
+         style: |
+           ha-card {
+             border-radius: 20px;
+             border: solid 1px rgba(100,100,100,0.3);
+             box-shadow: 3px 3px rgba(0,0,0,0.4)
+             overflow: hidden
+           }
+
+
+#     *************************************************************
+#     *                         Thermostat                        *
+#     *************************************************************
+
+      - type: picture-elements
+        image: /local/buttonbackground-lovelace/thermostat-living-room.jpg
+        elements:
+          - type: custom:text-element
+            text: "Living Room"
+            style: {color: white, font-size: 115%, font-weight: bold, left: 50%, top: 5%}
+          - type: custom:vertical-stack-in-card
+            cards:          
+              - type: thermostat
+                entity: climate.stelpro_stzw402_living_room
+                name: " "
+                style: |
+                  paper-icon-button {
+                    visibility: hidden
+                  }
+            style: {--paper-card-background-color: 'rgba(0, 0, 0, 0.0)', --primary-text-color: white, --secondary-text-color: white, width: 55%, font-color: white, font-size: 115%, font-weight: bold, left: 50%, top: 64.5%}
+        style: |
+          ha-card {
+            border-radius: 20px;
+            border: solid 1px rgba(100,100,100,0.3);
+            box-shadow: 3px 3px rgba(0,0,0,0.4)
+            overflow: hidden
+          }
