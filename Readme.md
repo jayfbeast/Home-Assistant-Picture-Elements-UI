@@ -25,29 +25,29 @@ It shows all the TV Channels I get with my Over the Air antenna.
 
 ##### Apple TV
 It shows the Remote Control for the Apple TV.
-<p align="center">
+
 ![](https://raw.githubusercontent.com/jayfbeast/Home-Assistant-Picture-Elements-UI/master/screenshots/HomeTheaterInputs/AppleTVInput.png)
-</p>
+
 ##### Kodi
 It shows the Remote Control for Kodi
-<p align="center">
+
 ![](https://raw.githubusercontent.com/jayfbeast/Home-Assistant-Picture-Elements-UI/master/screenshots/HomeTheaterInputs/KodiInput.png)
-</p>
+
 ##### PC (Gaming)
 It shows a PC Game launcher (which has not been developped officially yet, but I'll be releasing something in my second UI I'll be building).
-<p align="center">
+
 ![](https://raw.githubusercontent.com/jayfbeast/Home-Assistant-Picture-Elements-UI/master/screenshots/HomeTheaterInputs/PCGamingInput.png)
-</p>
+
 ##### Nintendo Switch
 It shows a Nintendo Switch spashsceen has I have not implemented something yet.
-<p align="center">
+
 ![](https://raw.githubusercontent.com/jayfbeast/Home-Assistant-Picture-Elements-UI/master/screenshots/HomeTheaterInputs/NintendoSwitchInput.png)
-</p>
+
 ##### Network (Onkyo Amplifier Spotify, Chromecast, Airplay, etc.)
 It shows the Onkyo Amplifier Remote Control.
-<p align="center">
+
 ![](https://raw.githubusercontent.com/jayfbeast/Home-Assistant-Picture-Elements-UI/master/screenshots/HomeTheaterInputs/NetworkInput.png)
-</p>
+
 ### Living Room
 In this UI, I control my TV, Room Temperature and Lights
 
